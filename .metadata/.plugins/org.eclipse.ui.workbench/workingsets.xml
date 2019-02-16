@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1527929009964_1" label="one" name="one">
+<item elementID="=java01_04" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_08" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_11" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_15" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_03" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_07" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_10" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_14" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_02" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_06" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_13" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_17" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_interview" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_01" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_05" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_09" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_12" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_16" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1527929046092_2" label="work" name="work">
+<item elementID="=java01_06hw" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java01_07hw" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=AllWork" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Work0518" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Work0529" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=JavaEEWork" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=threadReview" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1527929090674_3" label="myProject" name="myProject">
+<item elementID="=ElephantProject" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=StudentScoreAnalycialSystem" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1528420363653_4" label="two" name="two">
+<item elementID="=Match2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Single" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java_myMvc" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_01" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_05" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_09" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Match" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_12" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyJsp" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=FirstApp" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_04" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_08" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_11" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_15" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyReflect" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ReviewTest" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_08work" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyStruts" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_03" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_07" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_10" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_14" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_02" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java02_06" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1532567163029_5" label="three" name="three">
+<item elementID="=Spring01" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=sshajax" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_03" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_07" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MySSH" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_05w" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Match2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SSH" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MySpring" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SSH03" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_04hw" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SpringMvc02" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_04" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ActivityMy" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_02w" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SSH04" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SSHRestful" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SingleProject" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Spring2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyActivity" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SSM_orcl" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SpfOA" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyShiroLearn" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=OracleJdbc" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Poi" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MMyWebC" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyBatis" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_01" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_05" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_03w" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ProuductAndConsumer" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MShiro" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SpringMvc" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Quartz" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=websocketnew" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_02" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=java03_06" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyWebC" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SSM" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Hibernate01" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=SSH02" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=javaHttpApiDemo" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyOA" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=MyHibernate" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=Echarts" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1527928697169_0" label="Window Working Set" name="Aggregate for window 1527928697168"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1535165552284_8" label="Multiple Working Sets" name="Aggregate:myProject:one:three:two:work:">
+<workingSet IMemento.internal.id="myProject"/>
+<workingSet IMemento.internal.id="one"/>
+<workingSet IMemento.internal.id="three"/>
+<workingSet IMemento.internal.id="two"/>
+<workingSet IMemento.internal.id="work"/>
+</workingSet>
+<mruList name="three"/>
+<mruList name="two"/>
+<mruList name="one"/>
+<mruList name="work"/>
+<mruList name="myProject"/>
+</workingSetManager>

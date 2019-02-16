@@ -1,0 +1,28 @@
+package com.liuxu.bean;
+
+import java.util.List;
+
+import com.lanou.bean.Emp;
+
+/**
+ * 1.sql定义的id名称必须和映射接口中方法名一致
+ * 2.sql定义的parameterType类型必须和接口方法参数类型一致，个数一致
+ * 3.sql定义的resultType类型必须和接口方法返回值类型一致 
+ * 4.sql映射文件的namespace的值必须和映射文件接口的全限定名(包名，接口名)一致
+ * @author LiuXu
+ * @time2018年9月18日下午3:19:11
+ **/
+public interface EmpMapper {
+
+	public Emp findEmpById(int id);
+	
+	public List<Emp> findAll();
+	
+	public void addEmp(Emp emp);
+	
+	public void deleteEmpById(int id);
+	
+	public void updateEmp(Emp emp);
+	
+	public String findEmpNameById(int id);
+}

@@ -1,0 +1,72 @@
+package com.sumi.dao.impl;
+
+import java.io.Serializable;
+import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.sumi.bean.Employee;
+import com.sumi.bean.JobNumber;
+import com.sumi.dao.inter.EmployeeDao;
+
+/**
+ *
+ * @author SPF
+ * @time 2018年8月28日下午3:48:27
+ */
+@Repository("employeeDao")
+public class EmployeeDaoImpl implements EmployeeDao {
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+
+	@Override
+	public JobNumber loginCheck(String jobnum, String password) {
+		// //获取session对象
+		// Session session =
+		// hibernateTemplate.getSessionFactory().openSession();
+		//
+		// //封装hql获取query对象
+		// Query query = session.createQuery(hql);
+		// //给占位符赋值
+		// query.setString(0, jobnum);
+		// query.setString(1, password);
+		// //执行查询
+		// JobNumber jobNumber = (JobNumber) query.uniqueResult();
+		// 定义hql语句
+		String hql = "from JobNumber where jobnum=? and password=?";
+		List<JobNumber> jobNumbers = (List<JobNumber>) hibernateTemplate.find(hql, jobnum,password);
+		if (jobNumbers.isEmpty()||jobNumbers.size()==0) {
+			return null;
+		}
+		return jobNumbers.get(0);
+	}
+
+	/**
+	 * 根据工号查找工号对象
+	 */
+	@Override
+	public JobNumber findJobNumber(String jobnum) {
+		String hql = "from JobNumber where jobnum=?";
+		List<JobNumber> jobNumbers = (List<JobNumber>) hibernateTemplate
+				.find(hql, jobnum);
+		if (jobNumbers.isEmpty() || jobNumbers.size() == 0) {
+			return null;
+		}
+		return jobNumbers.get(0);
+	}
+	/**
+	 * 更新工号对象
+	 */
+	@Override
+	public void updateJobNumber(JobNumber jobNumber) {
+		hibernateTemplate.saveOrUpdate(jobNumber);
+
+	}
+
+}

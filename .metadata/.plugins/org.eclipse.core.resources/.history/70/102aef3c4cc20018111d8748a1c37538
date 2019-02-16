@@ -1,0 +1,29 @@
+package com.lanou.mysql;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+/**
+ * mysql存储过程的使用
+ * 
+ * @author LiuXu
+ * @time2018年9月27日下午7:47:39
+ **/
+public class MysqlPro {
+
+	public static void main(String[] args) {
+		try {
+//加载驱动
+			Class.forName("com.mysql.Driver");
+//			获取连接
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8080/liuxudb2?useUnicode=true&character=utf8", "root", "123456");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+}

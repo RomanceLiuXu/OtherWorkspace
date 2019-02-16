@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;MyTest.java&apos; to &apos;java02_07/src/com.lanou.seven&apos;&#x0A;- Original project: &apos;java02_06&apos;&#x0A;- Destination element: &apos;java02_07/src/com.lanou.seven&apos;&#x0A;- Original element: &apos;com.lanou.work.MyTest.java&apos;" description="Copy compilation unit" destination="=java02_07/src&lt;com.lanou.seven" element1="/src&lt;com.lanou.work{MyTest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1531039150256" units="1" version="1.0"/>
+</session>

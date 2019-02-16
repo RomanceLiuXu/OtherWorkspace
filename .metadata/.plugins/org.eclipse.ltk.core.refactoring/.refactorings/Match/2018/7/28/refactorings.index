@@ -1,0 +1,40 @@
+1531307049631	Copy compilation unit
+1531307074409	Delete element
+1531307200717	Rename type 'UserDao'
+1531307451225	Rename type 'UserServlet'
+1531307474889	Rename type 'UserDaoE'
+1531307499515	Rename type 'UserDaoI'
+1531307520026	Rename type 'UserServiceE'
+1531307539434	Rename type 'UserServiceI'
+1531312967473	Delete elements
+1531322045961	Extract local variable 'parameter'
+1531374442377	Extract local variable 'findUsers'
+1531397978286	Delete element
+1531398889324	Delete element
+1531405112580	Delete element
+1531405122900	Delete element
+1531446732033	Delete element
+1531446838976	Rename type 'FileUp'
+1531447251341	Delete element
+1531482553063	Delete element
+1531488159722	Delete element
+1531496620316	Rename resource 'home02.html'
+1531530494683	Delete element
+1531530500770	Delete element
+1531530544009	Rename resource ' photoupsuccess(1).html'
+1531530554886	Rename resource 'photoup(1).html'
+1531539689815	Delete element
+1531539704521	Rename resource 'checkpsw(1).css'
+1531539730373	Delete element
+1531539740168	Rename resource 'checkpsw(1).html'
+1531555774025	Delete element
+1531556154739	Delete elements
+1531556223917	Rename resource ' photoupsuccess(2).html'
+1531556235657	Rename resource 'photoup(2).html'
+1531556254151	Rename resource ' photoupsuccess.html'
+1531556346657	Delete elements
+1531557444951	Rename resource 'Upphoto.html'
+1531557481218	Rename resource 'Successphoto.html'
+1531559613424	Rename type 'UserP'
+1531560244938	Rename resource 'home.html'
+1531560258861	Rename resource 'homepage.html'

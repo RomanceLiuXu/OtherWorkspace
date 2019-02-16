@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Role.hbm.xml&apos; to &apos;SSH02/src/com.lanou.bean&apos;&#x0A;- Original project: &apos;MyOA&apos;&#x0A;- Destination element: &apos;SSH02/src/com.lanou.bean&apos;&#x0A;- Original element: &apos;Role.hbm.xml&apos;" description="Copy file" destination="=SSH02/src&lt;com.lanou.bean" element1="src/com/sumi/bean/Role.hbm.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1536474611557" units="0" version="1.0"/>
+</session>

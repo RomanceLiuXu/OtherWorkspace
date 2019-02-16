@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate映射文件 -->
+<hibernate-mapping>
+<!-- 数据表和实体类之间的映射
+	name:实体类全限定名
+	table:数据库中表名
+ -->
+<class name="com.lanou.bean.Dept" table="dept"> 
+	<!-- 数据表中字段和实体类中属性之间的映射关系 -->
+	<!-- 主键映射 
+	  name:实体类中表示主键的属性名
+	  type:属性类型
+	-->
+	<id name="deptNo" type="int">
+	<!-- 数据表中充当主键的列名 -->
+		<column name="deptNo"/>
+		<!-- 主键的生成策略 
+			1.assigned:主键由自己指定，在插入数据时，主键必须给定值
+			2.identity:主键自增长,在插入数据时，主键不能给定值（mysql[auto-increment]）
+			3.uuid:生成32位随机字符串充当主键id，主键的类型必须是字符串(var,char)
+			  	一个32的随机码（由小写字母和数字组成）
+			4.sequence:序列，使用序列来生成主键，一般用在Oracle，DB2中
+			5.根据不同的数据库来使用对应的策略生成主键
+			   mysql:根据自增长生成主键
+			   Oracle：根据序列生成主键
+		-->
+		<generator class="assigned"/>
+	</id>
+	<!-- 非主键字段和实体类中属性之间的映射 
+		name:实体类中属性名称
+	 	type:实体类中属性名称
+	-->
+	<property name="deptName" type="java.lang.String">
+	<!-- 数据表中对应的字段名 -->
+		<column name="deptName"/>
+	</property>
+	<property name="location" type="java.lang.String">
+		<column name="location"/>
+	</property>
+</class>
+</hibernate-mapping>

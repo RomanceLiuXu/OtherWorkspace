@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" uri="file:/Users/xalo/Downloads/hibernate-mapping-3.0.dtd"/>
+</catalog>

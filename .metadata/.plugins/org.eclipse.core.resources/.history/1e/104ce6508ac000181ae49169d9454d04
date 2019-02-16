@@ -1,0 +1,26 @@
+package com.liuxu.myTest;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
+import au.com.bytecode.opencsv.CSVReader;
+
+/**
+ *
+ * @author LiuXu
+ * @time2018年9月25日下午2:01:22
+ **/
+public class Test2 {
+
+	public static void main(String[] args) throws UnsupportedEncodingException, FileNotFoundException {
+		CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream("/Users/xalo/Documents/one"), "utf-8"));
+		String[] strs = null;
+		while ((reader.readNext())!=null) {
+			
+			
+		}
+	}
+	
+}

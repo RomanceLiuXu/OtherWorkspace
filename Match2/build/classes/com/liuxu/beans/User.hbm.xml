@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate映射文件  一对一的配置文件-->
+<hibernate-mapping>
+	<!-- 数据表和实体类之间的映射 name:实体类全限定名 table:数据库中表名 -->
+	<class name="com.liuxu.beans.User" table="user">
+	<id name="uid" type="int" column="uid">
+	<generator class="native"></generator>
+	</id>
+<property name="name" type="string" column="name"></property>
+<property name="age" type="int" column="age"></property>
+<property name="sex" type="string" column="sex"></property>
+<property name="psw" type="string" column="psw"></property>
+<property name="answer" type="string" column="answer"></property>
+<property name="address" type="string" column="address"></property>
+<!-- 一对一映射
+	name:当前实体类描述对方的实体类属性名
+	class:对方实体类全限定名
+ -->
+<one-to-one name="picture" class="com.liuxu.beans.Picture" cascade="all" lazy="false" property-ref="user">
+</one-to-one>
+	</class>
+</hibernate-mapping>

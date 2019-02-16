@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="one" namespace="/" extends="struts-default">
+     <action name="reginster" class="com.lanou.action.StuAction" method="reginsterAction"> 
+     <result name="success">
+      /jsp/success.jsp     
+     </result>
+     <result name="error">
+     /jsp/reginster.jsp
+     </result>
+     </action> 
+      <action name="addemployee" class="com.lanou.action.EmployeeAction" method="employeeAction">
+      <result name="success">
+      /jsp/success.jsp
+      </result>
+      <result name="error">
+       /jsp/employee.jsp      
+      </result>
+      </action>
+	</package>
+
+</struts>

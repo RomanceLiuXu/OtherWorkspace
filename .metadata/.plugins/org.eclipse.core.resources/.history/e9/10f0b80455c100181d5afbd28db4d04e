@@ -1,0 +1,75 @@
+package com.liuxu.myTest;
+
+import java.awt.Font;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+
+/**
+ *
+ * @author LiuXu
+ * @time2018年9月26日下午2:08:21
+ **/
+public class myJfreechart {
+
+	private ChartPanel chartPanel;
+
+	public static CategoryDataset getDataset() {
+
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		dataset.setValue(100, "北京", "苹果");
+		dataset.setValue(20, "上海", "香蕉");
+		dataset.setValue(50, "陕西", "荔枝");
+		dataset.setValue(400, "山西", "西瓜");
+		dataset.setValue(200, "广州", "葡萄");
+		dataset.setValue(300, "武汉", "梨子");
+		dataset.setValue(90, "武汉", "梨子");
+		dataset.setValue(400, "武汉", "梨子");
+		return dataset;
+
+	}
+
+	public myJfreechart() {
+		// 获取集合数据
+		CategoryDataset dataset = getDataset();
+		JFreeChart chart = ChartFactory.createBarChart3D(
+				"柱状统计图", //图表标题
+				"水果种类", //categoryAxisLabel x轴
+				"数量", //categoryAxisLabel y轴
+				dataset,
+				PlotOrientation.VERTICAL,//分布方式 
+				true, //是否开启图例
+				false, //是否生成工具
+				false);
+		
+//		设置图标区域相关信息
+		CategoryPlot plot = chart.getCategoryPlot();
+		CategoryAxis domainAxis = plot.getDomainAxis();//x轴对象
+		domainAxis.setLabelFont(new Font("黑体", Font.BOLD, 15));//设置x轴标题字体
+		domainAxis.setTickLabelFont(new Font("宋体", Font.BOLD, 15));//设置x轴字体
+		ValueAxis rangeAxis = plot.getRangeAxis();
+		rangeAxis.setLabelFont(new Font("黑体", Font.BOLD, 15));//设置x轴标题字体
+		rangeAxis.setTickLabelFont(new Font("宋体", Font.BOLD, 15));//设置x轴字体
+	}
+
+	public myJfreechart(ChartPanel chartPanel) {
+		super();
+		this.chartPanel = chartPanel;
+	}
+
+	public ChartPanel getChartPanel() {
+		return chartPanel;
+	}
+
+	public void setChartPanel(ChartPanel chartPanel) {
+		this.chartPanel = chartPanel;
+	}
+
+}

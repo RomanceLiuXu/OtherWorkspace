@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+	<!--sql映射文件 
+	多个sql映射文件之间，namespace名称不能相同
+ 	-->
+	<mapper namespace="user">
+	<!-- 作用：提取多个sql定义中相同的sql片段 -->
+	<sql id="selectAll">
+		select * from user
+	</sql>
+	<!-- 根据id查询一个user对象 
+	id:代表当前这个sql定义
+	#{id}:代表占位符，大括号中的id和属性名一致 
+	parameterType:传给占位符的参数类型
+	resultType:sql语句执行完成后返回结果
+	include:对相同sql语句片段的引用
+	-->
+	<select id="findUserById" parameterType="int" resultType="user">
+		<include refid="selectAll"/>user where id=#{id}
+	</select>
+	<!-- 查询所有user对象 
+	返回list集合是，resultType写集合中元素类型
+	myBatis会自动封装为集合
+	-->
+	<select id="findAll" resultType="user">
+		<include refid="selectAll"/>
+	</select>
+	<!-- 插入一条数据 -->
+	<insert id="saveUser" parameterType="user">
+		insert into user(username,password,age,gender) 
+		values(#{username},#{password},#{age},#{gender})
+	</insert>
+	<!-- 根据id删除一条数据 -->
+	<delete id="deleteUserById" parameterType="int">
+		delete from user where id=#{id}
+	</delete>
+	<!-- 根据id修改一行记录 -->
+	<update id="updateUser" parameterType="user">
+	update user set 
+	username=#{username},
+	password=#{password},
+	age=#{age},
+	gender=#{gender} 
+	where id=#{id}
+	</update>
+	<!-- 根据名字模糊查询 -->
+	<select id="findUserLikeName" parameterType="string" resultType="user">
+		<include refid="selectAll"/>where username like #{username}
+	</select>
+	<!-- 根据账号和密码查询一个用户 -->
+	<!-- <select id="findUserByNameAndPsw" parameterType="user" resultType="user">
+	<include refid="selectAll"/>where username=#{username} and password=#{password}
+	</select> -->
+	<select id="findUserByNameAndPsw" parameterType="map" resultType="user">
+		<include refid="selectAll"/>where username=#{username} and password=#{password}
+	</select>
+	<!-- 根据id只查询账号和密码 参数传入一个map-->
+	<select id="findNameAndPsw" parameterType="int" resultType="map">
+		select username,password from user where id=#{id}
+	</select>
+	<!-- 查询所有账号和密码 -->
+	<select id="findAllNameAndPsw"  resultType="user">
+		select username,password from user
+	</select>
+	<!-- 查询表中所有数据，封装成user1类型对象集合 
+	实体类中的属性值与表中字段名不一致，如何进行操作
+	方案一:给列起别名，别名的名字和实体类属性名相同
+	方案二:可以借助resultMap标签
+	resultMap:表示sql语句查询结果类型对应哪一个映射关系
+	-->
+	<select id="findAllUser1" resultType="com.lanou.bean.User1">
+		select id uid,username name,password pwd,age uage,gender sex from user
+	</select>
+	
+	<select id="findUser1" resultMap="user1Bean">
+		select * from user
+	</select>
+	<!-- resultMap做实体类中属性和表中字段之间映射关系
+	type:表中每一行记录封装成什么类型对象
+	id：当前resultMap映射结果id
+	 -->
+	<resultMap type="com.lanou.bean.User1" id="user1Bean">
+	<!-- 主键映射
+	property:实体类中属性名
+	column:表中字段名称
+	 -->
+	<id property="uid" column="id"/>
+	<!-- 非主键映射 -->
+	<result property="name" column="username"/>
+	<result property="pwd" column="password"/>
+	<result property="uage" column="age"/>
+	<result property="sex" column="gender"/>
+	</resultMap>
+	<!--分页查询-->
+	<select id="findUserByPage" parameterType="map" resultType="user">
+		<include refid="selectAll"/> limit ${(pageIndex-1)*pageNum},${pageNum}
+	</select>
+	<!-- 查询总的记录条数 -->
+	<select id="findAllRows" resultType="int">
+		select count(*) from user
+	</select>
+	</mapper>

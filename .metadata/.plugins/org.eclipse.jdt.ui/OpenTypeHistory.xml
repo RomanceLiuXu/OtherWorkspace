@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=java01_17/src&lt;com.liuxu.ssas{IStudent.java[IStudent" modifiers="513" timestamp="1528612538000"/>
+<typeInfo handle="=java01_17/\/Library\/Java\/JavaVirtualMachines\/jdk1.8.0_91.jdk\/Contents\/Home\/jre\/lib\/rt.jar&lt;java.util.function(IntSupplier.class[IntSupplier" modifiers="1537" timestamp="1459498886000"/>
+<typeInfo handle="=java01_17/src&lt;com.lanou{IScore.java[IScore" modifiers="513" timestamp="1528359043000"/>
+<typeInfo handle="=ProuductAndConsumer/\/Library\/Java\/JavaVirtualMachines\/jdk1.8.0_91.jdk\/Contents\/Home\/jre\/lib\/rt.jar&lt;java.util(Observable.class[Observable" modifiers="33" timestamp="1459498886000"/>
+<typeInfo handle="=ProuductAndConsumer/\/Library\/Java\/JavaVirtualMachines\/jdk1.8.0_91.jdk\/Contents\/Home\/jre\/lib\/rt.jar&lt;java.util(Observer.class[Observer" modifiers="1537" timestamp="1459498886000"/>
+<typeInfo handle="=ProuductAndConsumer/src&lt;com.lanou.observes{SubscribeI.java[SubscribeI" modifiers="513" timestamp="1533622561000"/>
+<typeInfo handle="=AllWork/\/Library\/Java\/JavaVirtualMachines\/jdk1.8.0_91.jdk\/Contents\/Home\/jre\/lib\/rt.jar&lt;com.sun.xml.internal.bind.v2.schemagen.xmlschema(List.class[List" modifiers="1537" timestamp="1459498886000"/>
+<typeInfo handle="=Spring2/src&lt;com.lanou.dao{EmpDao.java[EmpDao" modifiers="513" timestamp="1534990426000"/>
+<typeInfo handle="=Spring2/\/Users\/xalo\/Documents\/oneworkspaces\/Spring2\/WebContent\/WEB-INF\/lib\/spring-jdbc-4.2.5.RELEASE.jar&lt;org.springframework.jdbc.datasource.embedded(EmbeddedDatabaseConfigurer.class[EmbeddedDatabaseConfigurer" modifiers="1537" timestamp="1534836732000"/>
+<typeInfo handle="=Spring2/src&lt;com.lanou.service{EmpService.java[EmpService" modifiers="513" timestamp="1534994930000"/>
+<typeInfo handle="=MySpring/src&lt;com.liuxu.dao{EmpDao.java[EmpDao" modifiers="513" timestamp="1535025056000"/>
+<typeInfo handle="=MyOA/src&lt;com.sumi.dao.inter{AttendDao.java[AttendDao" modifiers="513" timestamp="1535699133000"/>
+<typeInfo handle="=SSH02/src&lt;com.lanou.dao{EmpDao.java[EmpDao" modifiers="513" timestamp="1536568838000"/>
+<typeInfo handle="=SSH02/src&lt;com.lanou.dao{UserDao.java[UserDao" modifiers="513" timestamp="1536550408000"/>
+<typeInfo handle="=SSH02/src&lt;com.lanou.service{UserService.java[UserService" modifiers="513" timestamp="1536550868000"/>
+</typeInfoHistroy>

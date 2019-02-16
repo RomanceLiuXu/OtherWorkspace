@@ -1,0 +1,39 @@
+package com.liuxu.myTest;
+
+import org.jfree.chart.ChartPanel;
+import org.jfree.data.category.CategoryDataset;
+
+/**
+ *
+ * @author LiuXu
+ * @time2018年9月26日下午2:08:21
+ **/
+public class myJfreechart {
+
+	private ChartPanel chartPanel;
+
+	
+	public static CategoryDataset getDataset(){
+		
+		
+	}
+	
+	
+	public myJfreechart() {
+		super();
+	}
+
+	public myJfreechart(ChartPanel chartPanel) {
+		super();
+		this.chartPanel = chartPanel;
+	}
+
+	public ChartPanel getChartPanel() {
+		return chartPanel;
+	}
+
+	public void setChartPanel(ChartPanel chartPanel) {
+		this.chartPanel = chartPanel;
+	}
+
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/secondProject.css" />
+	</head>
+
+	<body>
+		<!--头顶层-->
+		<div class="top1">
+			<div class="top00">
+				<div class="top1-1">
+					<!--<span>珍爱网</span>
+					<br />
+					<span>zhenai.com</span>-->
+				</div>
+				<div class="top1-2">
+					每个渴望爱的人 都值得被真爱
+				</div>
+			</div>
+		</div>
+
+		<div class="out">
+			<!--底部层-->
+			<div class="wrap">
+				<div class="top2">
+					<span style="margin-left: 120px;">请编辑个人资料</span>
+				</div>
+				<div class="mid">
+
+					<!--上传图片-->
+					<div class="float">
+						
+						
+						<!-- <div class="up"> -->
+							<form action="fileup" class="up" enctype="multipart/form-data" method="post">
+								<input type="file" name="file" id="file1" />
+								<input type="submit" value="上传" />
+							</form>
+						<!-- </div> -->
+						<p>
+							<!--此处需要连接一个上传地址-->
+							<img src="img/head.jpeg" width="150px" height="160px" style="margin-top: 0px;">
+						</p>
+					</div>
+
+					<div class="mid1_1">
+						<span style="font-size: 18px;margin-right: 18px; ">
+					<span style="color: red;" >*</span> 姓 名 :</span>
+						<input type="text" id="usename" placeholder="请您输入账号名" style="color:red; font-size: 12px;height: 28px;width:200px;   border: 1px solid black;" />
+					</div>
+					<div class="mid1_2">
+						<span style="font-size: 	18px;margin-right: 18px;">
+					<span style="color: red;">*</span> 密 码 :</span>
+						<input type="password" id="usepsw1" placeholder="请您输入密码" style="color:red; font-size: 12px; height: 28px;width:200px;  	border: 1px solid black;" />
+					</div>
+					<div class="mid1_2_1">
+						<span style="font-size: 	18px;margin-right: 18px;">
+					<span style="color: red;">*</span> 确 认 密 码 :</span>
+						<input type="password" id="usepsw2" placeholder="请您确认密码" style="color:red; font-size: 12px; height: 28px;width:200px;  	border: 1px solid black;" />
+					</div>
+					<div class="mid1_2_2">
+						<span style="font-size: 	18px;margin-right: 18px;">
+					<span style="color: red;">*</span> 密 保 数 字 :</span>
+						<input type="password" id="usepswsave" placeholder="请您输入四位密保数字" style="color:red; font-size: 12px; height: 28px;width:200px;  	border: 1px solid black;" />
+					</div>
+					<div class="mid1_4">
+						<span style="font-size: 	18px;margin-right: 18px;">
+					<span style="color: red;">*</span> 年 龄 :</span>
+						<input type="text" id="useage" placeholder="请您输入0-120之间数字" style="color:red; font-size: 12px;height: 28px;width:200px;  	border: 1px solid black;" />
+					</div>
+					<div class="mid1_3">
+						<span style="color: red;">*</span>
+						<!--<span style="font-size: 	18px;margin-right: 18px;">性 别 :</span>
+				<input type="text" style="color:red; font-size: 18px;height: 28px;width:200px;  	border: 1px solid black;"/>-->
+						<input type="radio" class="sex" name="sex" value="男">男</input>
+						<input type="radio" class="sex" name="sex" value="女" style="margin-left: 30px;">女</input>
+					</div>
+					<select class="mid1_5" style="font-size: 18px;">
+						<option>省份</option>
+						<option>陕西</option>
+						<option>山西</option>
+						<option>广东</option>
+					</select>
+					<select class="mid1_6" style="font-size: 18px;">
+						<option>城市</option>
+					</select>
+				</div>
+				<!--<div class="right">
+					<span style="text-align: center;margin-bottom: 5px;">点击上传照片</span>
+				</div>-->
+				<div class="read">
+					<input type="checkbox" class="procoloread" name="vehicle" value="read" checked="checked" style="height: 20xp;width: 20px;" />
+					<a href="read.html">真爱网服务协议</a>
+				</div>
+				<div class="down" id="present">
+					确认注册
+				</div>
+				<!--底部图片-->
+				<div class="photo">
+					<span style="font-size: 28px;font-style: normal;color: black;">有缘网!你唯一的选择</span>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+	<script type="text/javascript">
+		//1:地址选择二级联动
+		var arr1 = ["西安", "咸阳", "渭南", "延安", "汉中", "商洛", "安康", "榆林", "延安", "宝鸡", "铜川"];
+		var arr2 = ["太原", "大同", "运城", "大同市", "阳泉市", "朔州市", "长治", "吕梁", "晋中", "临汾"];
+		var arr3 = ["广州市", "深圳市", "珠海", "汕头市", "佛山市", "韶关市", "湛江市", "江门市", "惠州市", "东莞市"];
+		var province = document.querySelector(".mid1_5");
+		var city = document.querySelector(".mid1_6");
+		province.onchange = function() {
+			var n = city.children.length;
+			//清空城市标签中的数据
+			for(var i = 1; i < n + 1; i++) {
+//				city.remove(city.children[i]);
+				city.innerHTML = "";
+				city.innerHTML="<option>城市</option>";
+			}
+			if(province.value == "陕西") {
+				//遍历数组
+				for(var i = 0; i < arr1.length; i++) {
+					//创建节点并向select中添加数据
+					var op = document.createElement("option");
+					op.innerText = arr1[i];
+					city.appendChild(op);
+				}
+			} else if(province.value == "山西") {
+				for(var i = 0; i < arr2.length; i++) {
+					//创建节点并向select中添加数据
+					var op1 = document.createElement("option");
+					op1.innerText = arr2[i];
+					city.appendChild(op1);
+				}
+			} else if(province.value == "广东") {
+				for(var i = 0; i < arr3.length; i++) {
+					//创建节点并向select中添加数据
+					var op2 = document.createElement("option");
+					op2.innerText = arr3[i];
+					city.appendChild(op2);
+				}
+			}
+		}
+
+		//2:获取用户注册信息并判断,如果符合要求,则利用ajxa请求传送给后台
+		var usename = document.getElementById("usename");
+		var usepsw1 = document.getElementById("usepsw1");
+		var usepsw2 = document.getElementById("usepsw2");
+		var usepswsave = document.getElementById("usepswsave");
+		var useage = document.getElementById("useage");
+		var usesex = document.getElementsByClassName("sex");
+		var present = document.getElementById("present");
+		var procoloread = document.getElementsByClassName("procoloread");
+		
+		
+		
+
+		//总方法向servlet发送数据
+		present.onclick = function() {
+			//判断用户名是否为空或者含有空格键
+			//if (usename.value.indexOf(" ")>=0||usename.value==null) {
+			if (usename.value==null||usename.value=="") {
+				//如果不满足要求则弹出alert
+				alert("用户名不能为空");
+				//如果满足则继续判断其他的
+			} else{
+				//判断密码是否为空或者含有空格
+				//if (usepsw1.value==null||usename.value.index(" ")>=0) {
+				if (usepsw1.value==null||usepsw1.value=="") {
+					//如果不满足则弹出alert
+					alert("密码不能空");
+					//如果满足条件则执行其他
+				} else{
+					//判断两次输入的密码是否一致
+					if (usepsw1.value!=usepsw2.value) {
+						//如果不满足则弹出alert
+					alert("前后两次密码不一致");
+					//一致的话执行后面的语句
+					} else{
+						//判断密报数字是否为空
+						if (usepswsave.value<0||usepswsave.value>9999||usepswsave.value=="") {
+							alert("请输入正确的密保数字,方便您以后找回密码");//密保数字有问题还需解决
+						}else{
+							//判断年龄是否为空
+							if (useage.value==null||useage.value<0||useage.value>120||useage.value=="") {
+								alert("请您输入正确的年龄");
+							}else{
+								//选择性别
+								var sexsend = sexchioce(usesex);
+								if (sexsend!=null) {
+									//选择省份
+									var provincesend = provincechioce(province);
+									if (provincesend!=null) {
+										//选择城市
+										var citysend = citychioce(city);
+										if (citysend!=null) {
+											//是否阅读了网站服务协议
+											var procoloreadsend = readprotocol(procoloread);
+											if (procoloreadsend!=null||procoloreadsend!="") {
+												//待所有项目完全满足要求后,即可向servlet发送数据
+												$.ajax({
+													type:"post",
+													url:"register",
+													data:{
+														//uid:"",
+														//暂时不传ID了
+														name:usename.value,
+														age:useage.value,
+														sex:sexsend,
+														address:provincesend+citysend,
+														psw:usepsw1.value,
+														snswer:usepswsave.value
+													},
+													async:true,
+													success:function(res){
+													//此处返回一个boolean类型的值,如果为true,则显示注册成功,如果错误,则显示注册失败(用户名已经存在)
+														//此处返回一个boolean类型的值,如果为true,则显示注册成功,如果错误,则显示注册失败
+														//(用户名已经存在)
+														console.log(res);
+														var result = JSON.parse(res);
+														var is = result.flag;
+														console.log(is);
+														if (is==true) {
+															document.getElementsByTagName("body")[0].innerHTML="<span>注册成功<a href='login.html'>  登录....</a></span>";
+															//document.getElementsByTagName("body")[0].innerText="注册成功";
+															
+														}else{
+															document.getElementsByTagName("body")[0].innerHTML="";
+															document.getElementsByTagName("body")[0].innerText="注册失败--用户名已存在";
+														}
+													
+													
+													
+													
+													}
+												});
+												
+											}
+										}
+									}
+								}
+							}
+							
+						}
+					}
+					
+				}
+				
+			}
+			
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+		//设置确认性别的方法
+		function sexchioce(arr) {
+			var boo = true;
+			//获取用户点击性别的内容   
+			for(var i = 0; i < arr.length; i++) {
+				if(arr[i].checked == true) {
+					var sex = arr[i].value;
+					//console.log(sex);
+					boo = false;
+					return sex;
+					break;
+				}
+			}
+			if(boo) {
+				alert("请选择性别")
+			}
+		}
+
+		//设置确认选择省份的方法
+		function provincechioce(arr) {
+			var boo = true;
+			//获取用户点击性别的内容   
+			for(var i = 0; i < arr.length; i++) {
+				if(arr[i].selected == true) {
+					if(arr[i].text != "省份") {
+						var sex = arr[i].text;
+						//console.log(sex);
+						boo = false;
+						return sex;
+						break;
+					}
+				}
+			}
+			if(boo) {
+				alert("请选择省份")
+			}
+		}
+
+		//设置确认选择城市的方法
+		function citychioce(arr) {
+			var boo = true;
+			//获取用户点击性别的内容   
+			for(var i = 0; i < arr.length; i++) {
+				if(arr[i].selected == true) {
+					if(arr[i].text != "城市") {
+						var sex = arr[i].text;
+						//console.log(sex);
+						boo = false;
+						return sex;
+						break;
+					}
+				}
+			}
+			if(boo) {
+				alert("请选择城市")
+			}
+		}
+
+		//设置确认是否阅读了网站协议说明的方法
+		function readprotocol(arr) {
+			var boo = true;
+			//获取用户点击性别的内容   
+			for(var i = 0; i < arr.length; i++) {
+				if(arr[i].checked == true) {
+					boo = false;
+					//console.log(boo);
+					break;
+				}
+			}
+			if(boo) {
+				alert("请您先阅读网站服务协议")
+			}
+		}
+
+	 
+	</script>
+
+</html>

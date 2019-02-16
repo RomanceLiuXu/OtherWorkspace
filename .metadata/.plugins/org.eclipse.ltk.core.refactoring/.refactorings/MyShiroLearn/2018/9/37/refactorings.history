@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;iniSecurityManagerFactory&apos; from expression &apos;new IniSecurityManagerFactory(&quot;classpath:shiro.ini&quot;)&apos;&#x0A;- Original project: &apos;MyShiroLearn&apos;&#x0A;- Variable name: &apos;iniSecurityManagerFactory&apos;&#x0A;- Destination method: &apos;com.lanou.test.ShiroTest.tset1()&apos;&#x0A;- Variable expression: &apos;new IniSecurityManagerFactory(&quot;classpath:shiro.ini&quot;)&apos;&#x0A;- Replace occurrences of expression with variable" description="Extract local variable &apos;iniSecurityManagerFactory&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src&lt;com.lanou.test{ShiroTest.java" name="iniSecurityManagerFactory" replace="true" selection="218 52" stamp="1536993491129" version="1.0"/>
+</session>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="user" namespace="/" extends="json-default">
+		<action name="CheckLogin" class="com.lanou.action.LoginAction" method="login">
+			<result name="success" type="json">
+			  <param name="root">result</param>
+			</result>
+		</action>
+		<action name="registerAction" class="com.lanou.action.RegisterAction" method="reginster">
+			<result name="success" type="json">
+			  <param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="student" namespace="/" extends="struts-default">
+	<action name="showStudent" class="com.lanou.action.StudentAction" method="showStudent"> 
+	<result name="success">
+	showStudent.jsp
+	</result>
+	</action>
+	<action name="AddStudentAction" class="com.lanou.action.StudentAction" method="addStudent"> 
+	<result name="add_success" type="redirectAction">
+	showStudent
+	</result>
+	</action>
+	</package>
+	
+</struts>

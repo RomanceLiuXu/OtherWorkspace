@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+body {
+	margin: 0px auto;
+	/*//min-width: 800px;*/
+	height: 800px;
+	position: relative;
+	color: blue;
+}
+
+.wrap {
+	text-align: center;
+}
+
+#photoup {
+	position: absolute;
+	height: 180px;
+	width: 150px;
+	border: 1px solid darkgray;
+	top: 35%;
+	left: 40%;
+}
+
+.up {
+	width: 150px;
+	height: 30px;
+	position: absolute;
+	top: 100%;
+	/*left: 0%;*/
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+	离注册成功就差最后一步了,上传张照片更能吸引对方哦!
+<!-- 	<div class="wrap">
+		<div id="photoup">
+			<form action="fileup" class="up" enctype="multipart/form-data"
+				method="get">
+				<input type="file" name="file" id="file1" /> <input type="text"
+					name="uid" hidden id="uiddd" />
+				<input type="submit" value="上传" />
+				<input type="submit" value="上传" />
+			</form>
+		</div>
+	</div> -->
+
+
+	 <div class="wrap">
+			<div id="photoup">
+				<form action="fileup"  class="up" enctype="multipart/form-data" method="post">
+					<input type="file" name="file" id="file1" />
+					<input type="text" name="uuid" hidden  id="uiddd" /> 
+					<!-- <input type="text" name="bb" value="22"/>  -->
+					<input type="submit"  value="上传" />
+				</form>
+			</div>
+		</div> 
+</body>
+<script src="js/jquery-2.2.4.min.js" type="text/javascript"
+	charset="utf-8"></script>
+
+<script type="text/javascript">
+	window.onload = function() {
+		var id = location.href;
+		var uid = id.split("=")[1];
+		var uidname = document.getElementById("uiddd");
+		uidname.value = uid;
+	}
+</script>
+
+</html>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+	<!-- 动态查询 -->
+	<mapper namespace="com.lanou.dao.EmpMapper">
+	<!-- 查询员工信息 -->
+	<!-- 如果传入了部门编号，就查询该部门下所有的员工信息
+	如果没有传入，就查询所有人员信息
+	 -->
+	<!--  <select id="findEmps" parameterType="emp" resultType="emp">
+		select * from emp
+		判断有没有传入部门编号
+		<if test="deptno!=0">
+			where deptno=#{deptno}
+		</if>
+	 </select> -->
+	 <!-- 根据薪资查询员工信息 
+	 	1.如果传入了薪资，就查询大于此薪资的员工信息
+	 	2.如果没有传入，就查询薪资大于6000的员工信息
+	 -->
+	 <!-- <select id="findEmpsBySalary" parameterType="emp" resultType="emp">
+	  select * from emp where salary >
+	  <if test="salary!=0">
+	  	#{salary}
+	  </if>
+	  <if test="salary==0">
+	   6000
+	  </if>
+	 </select> -->
+	<!-- 根据性别查询员工信息
+	1.如果传入了性别，就查询此性别的员工
+	2.如果没有传入，就查询所有男性员工
+	 -->
+	<!--  <select id="findEmpsBySex" parameterType="emp" resultType="emp">
+	 select * from emp where sex=
+	 <choose>
+	 <when test="sex!=null">
+	 	#{sex}
+	 </when>
+	 <otherwise>
+	 	'男'
+	 </otherwise>
+	 </choose>
+	 </select> -->
+	 <!--根据job和salary两个条件查询员工信息
+	 1.如果只传入了jod，就查询该职位下员工信息
+	 2.如果只传入了salary，就查询薪水大于此salary员工信息
+	 3.如果两个条件都传入了，就查询该职位下薪水大于salary的员工信息
+	 4.如果都没有传入，就查询所有
+	 where标签作用
+	 1>充当一个sql语句中where关键字
+	 2>去掉sql语句拼接完成后多余的and，or关键字
+	  -->
+	<!--   <select id="findEmpsByJobAndSalary" parameterType="emp" resultType="emp">
+	  	select * from emp -->
+	  	<!-- <if test="job!=null">
+	  		<if test="salary==0">
+	  			where job=#{job}
+	  		</if>
+	  		<if test="salary!=0">
+	  			where job=#{job} and salary>#{salary}
+	  		</if>
+	  	</if>
+	  	<if test="job==null">
+	  		<if test="salary!=0">
+	  			where salary>#{salary}
+	  		</if>
+	  	</if> -->
+	 <!--  <where>
+	  	<if test="job!=null">
+	  	 and job=#{job} 
+	  	</if>
+	  	<if test="salary!=0">
+	  	and salary>#{salary}
+	  	</if>
+	  	</where>
+	  </select> --> 
+	  <!-- 修改emp员工的信息，判断传入了几项数据
+	  	传入了几项数据，就要去修改几项数据
+	  	update emp set name='',pwd='' where id=;
+	  	set标签作用:
+	  	1.充当set关键字
+	  	2.可以去调用拼接完成后sql语句后，多余的逗号
+	    -->
+	 <!--  <select id="updateEmp" parameterType="emp">
+	  	update emp
+	  	<set>
+	  	<if test="name!=null">
+	  		name=#{name},
+	  	</if>
+	  	<if test="sex!=null">
+	  		sex=#{sex},
+	  	</if>
+	  	<if test="job!=null">
+	  		job=#{job},
+	  	</if>
+	  	<if test="salary!=0">
+	  		salary=#{salary},
+	  	</if>
+	  	<if test="hiredate!=null">
+	  		hiredate=#{hiredate},
+	  	</if>
+	  	<if test="deptno!=0">
+	  		deptno=#{deptno},
+	  	</if>
+	  	</set>
+	  	where id=#{id}
+	  </select>
+	  
+	  <select id="findEmpById" parameterType="int" resultType="emp">
+	  	select * from emp where id=#{id}
+	  </select> 
+	  
+	   <select id="findEmpById" parameterType="int" resultType="emp">
+	  	select * from emp where id=#{id}
+	  </select>
+	   <select id="findAll" resultType="emp">
+	  	select * from emp
+	  </select>
+	   <select id="addEmp" parameterType="emp">
+	  	insert into emp(name,sex,job,salary,hiredate,deptno) 
+	  	values(#{name},#{sex},#{job},#{salary},#{hiredate},#{deptno});
+	  </select>
+	  <select id="deleteEmpById" parameterType="int" resultType="emp">
+	  	delete from emp where id=#{id}
+	  </select>
+	  
+	 <select id="updateEmp" parameterType="emp">
+	  	update emp
+	  	<set>
+	  	<if test="name!=null">
+	  		name=#{name},
+	  	</if>
+	  	<if test="sex!=null">
+	  		sex=#{sex},
+	  	</if>
+	  	<if test="job!=null">
+	  		job=#{job},
+	  	</if>
+	  	<if test="salary!=0">
+	  		salary=#{salary},
+	  	</if>
+	  	<if test="hiredate!=null">
+	  		hiredate=#{hiredate},
+	  	</if>
+	  	<if test="deptno!=0">
+	  		deptno=#{deptno},
+	  	</if>
+	  	</set>
+	  	where id=#{id}
+	  </select>
+	  <select id="findEmpNameById" parameterType="int" resultType="string">
+	  	select name from emp where id=#{id}
+	  </select> -->
+	</mapper>

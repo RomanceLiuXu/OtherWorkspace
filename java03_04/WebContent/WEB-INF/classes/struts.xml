@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="one" namespace="/" extends="struts-default">
+
+      <action name="login" class="com.lanou.action.LoginAction" method="LogAction"> 
+      
+      <result name="success">
+      /jsp/home.jsp
+      </result>
+      <result name="error">
+      /jsp/login.jsp
+      </result>
+      </action>
+      
+      <!-- 值栈 -->
+      <action name="test1" class="com.lanou.action.TestAction">
+      <result name="success">
+       /jsp/test1.jsp
+      </result>
+      </action>
+      
+      <action name="test2" class="com.lanou.action.TestAction2">
+      <result name="success">
+       /jsp/test2.jsp
+      </result>
+      </action>
+      
+      <action name="test2_2" class="com.lanou.action.TestAction2" method="method1">
+      <result name="success" >
+       /jsp/test3.jsp
+      </result>
+      </action>
+      
+      <action name="test3" class="com.lanou.action.TestAction3" method="method1">
+      <result name="success" >
+       /jsp/test4_1.jsp
+      </result>
+      </action>
+
+	</package>
+
+</struts>

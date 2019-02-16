@@ -1,0 +1,31 @@
+package com.lanou.mysql;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.lanou.util.MyBatisUtil;
+
+
+
+/**
+ *
+ * @author LiuXu
+ * @time2018年9月18日上午9:31:55
+ **/
+public class TestCase1 {
+
+	SqlSessionFactory factory;
+
+	@Before
+	public void InitialContext() {
+		factory = MyBatisUtil.getSqlSessionFactory();
+	}
+	
+	
+	
+}

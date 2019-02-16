@@ -1,0 +1,28 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.lanou.bean.Car"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=UTF-8>
+<title>标题</title>
+</head>
+<body>
+<%
+List<Car> cars = new ArrayList<Car>();
+Car car1 = new Car(1,"aa");
+Car car2 = new Car(2,"bb");
+Car car3= new Car(3,"cc");
+cars.add(car1);
+cars.add(car2);
+cars.add(car3);
+request.setAttribute("cars", cars);
+%>
+<%
+ List<Car> lists=(List<Car>) request.getAttribute("cars");
+
+%>
+</body>
+</html>

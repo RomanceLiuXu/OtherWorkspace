@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;InternetWork.Cave&apos; to &apos;MyCave&apos;&#x0A;- Original project: &apos;threadReview&apos;&#x0A;- Original element: &apos;InternetWork.Cave&apos;&#x0A;- Renamed element: &apos;InternetWork.MyCave&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Cave&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;InternetWork{Cave.java[Cave" matchStrategy="1" name="MyCave" qualified="false" references="true" similarDeclarations="false" stamp="1528531038158" textual="true" version="1.0"/>
+</session>

@@ -1,0 +1,140 @@
+body {
+	margin: auto;
+	background-color: #DCDCDC;
+}
+
+.wrap {
+	margin: auto;
+	height: auto;
+	width: 1000px;
+	min-width: 300px;
+	background: white;
+	border: 1px solid gainsboro;
+	position: relative;
+}
+
+.top00 {
+	margin: auto;
+	height: auto;
+	width: 1000px;
+	min-width: 1000px;
+}
+
+.top1 {
+	height: auto;
+	width: 100%;
+	border: 1px solid bisque;
+	display: inline-block;
+	vertical-align: middle;
+	background-color: ghostwhite;
+}
+
+.top1-1 {
+	height: 56px;
+	width: 100px;
+	background-image: url(../img/logo.jpeg);
+	background-size: contain;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 20px;
+	margin-left: 0px;
+}
+
+.top1-2 {
+	height: 56px;
+	width: 300px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+	line-height: 95px;
+	text-align: center;
+	border-left: 3px dotted gainsboro;
+	font-size: 20px;
+	color: grey;
+	margin: 20px;
+}
+
+.top2 {
+	height: 60px;
+	width: 100%;
+	margin-left: 0px;
+	font-size: 20px;
+	color: darkgray;
+	line-height: 60px;
+	background-color: pink;
+}
+
+
+.up{
+	width: 150px;
+	height: 30px;
+	position: absolute;
+	/*background-color: blue;*/
+	/*right: 18%;*/
+	top: 108%;
+	text-align: center;
+	/*line-height: 180px;*/
+}
+
+.mid {
+	height: auto;
+	width: 100%;
+	border-bottom: 1px solid plum;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.mid1_1 {
+	height: 40px;
+	width: 40%;
+	margin: 10px;
+	margin-top: 80px;
+	margin-left: 319px;
+}
+
+.mid1_2 {
+	height: 40px;
+	width: 40%;
+	margin: 10px;
+	margin-left: 265px;
+	margin-top: 40px;
+}
+
+.down {
+	height: 40px;
+	width: 10%;
+	border: 2px solid black;
+	border-radius: 10px;
+	margin: 10px;
+	font-size: 18px;
+	color: red;
+	margin-left: 40%;
+	
+	text-align: center;
+	line-height: 40px;
+	background-color: gainsboro;
+	margin-top: 80px;
+}
+.photo{
+	height: 200px;
+	width: 100%;
+	/*background: url(../img/downphoto.jpeg);*/
+	background-image: url(../img/downphoto.jpeg);
+	text-align: center;
+	line-height: 300px;
+	opacity: 0.2;
+	margin-top: 150px;
+}
+#div {
+	width: 500px;
+	height: 500px;
+	text-align: center;
+	line-height: 500px;
+	position: absolute;
+	background-color: lightgoldenrodyellow;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}

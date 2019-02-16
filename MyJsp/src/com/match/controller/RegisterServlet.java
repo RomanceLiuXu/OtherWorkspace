@@ -1,0 +1,53 @@
+package com.match.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSON;
+import com.google.gson.JsonObject;
+import com.match.beans.User;
+import com.match.dao.RegisterDaoE;
+import com.match.service.RegisterServiceE;
+
+/**
+ *
+ * @author keb
+ * @tim2018年7月12日下午3:36:15
+ **/
+public class RegisterServlet extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 设置编码格式
+		resp.setContentType("text/html;charset=utf-8");
+		// 获取请求的数据
+		// int newid =Integer.valueOf (req.getParameter("uid"));
+		// System.out.println(newid);
+		String newname = req.getParameter("name");
+		int newage = Integer.valueOf(req.getParameter("age"));
+		String newsex = req.getParameter("sex");
+		String newaddress = req.getParameter("address");
+		String newpsw = req.getParameter("psw");
+		String newsnwer = req.getParameter("snswer");
+		// 实例化user类,并赋值
+		User user = new User(newname, newage, newsex, newaddress, newpsw, newsnwer);
+		// 调用service的方法
+		RegisterServiceE regservicee = new RegisterServiceE();
+		// 掉方法
+		int n = regservicee.addMethod(user);
+		// 实例化写入对象
+		PrintWriter pw = resp.getWriter();
+		// // 定义标识向前端传送信息
+		// 写入前端
+		pw.print(n);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 打开国际化 -->
+	<constant name="struts.custom.i18n.resources" value="global" />
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="one" namespace="/" extends="struts-default">
+		<action name="one" class="com.lanou.DemoAction">
+			<result name="success">
+				/jsp/demo1.jsp
+			</result>
+		</action>
+
+		<action name="two" class="com.lanou.Demo2Action" method="method1">
+			<!-- 引入默的拦截器，并在拦截器中指定操作fileupload拦截器 -->
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.allowedExtensions">png,jpg</param>
+			</interceptor-ref>
+			<result name="success">
+				/jsp/demo2.jsp
+			</result>
+		</action>
+		
+		<action name="hello" class="com.lanou.action.HellloAction">
+		<result name="success">
+        /WEB-INF/hello.jsp		
+		</result>
+		</action>
+		
+		
+         <!-- 文件下载 -->
+		<action name="three" class="com.lanou.Demo3Action" method="method1">
+			<result name="success" type="stream">
+			<!-- 指定下载文件的类型
+			 通常指设置为可执行文件即可：application/octet-stream
+			 -->
+			<param name="contentType">application/octet-stream</param>
+			<!-- 指定文件下载的输入流对象 名称和action中的输入流对象名保持一致 -->
+			<param name="inputName">inputStream</param>
+			<!-- 指定下载的文件是否显示，和下载的文件名称  下载文件的消息头，以及下载的文件名  如果注释了，就只能预览不能下载了-->
+			<param name="contentDisposition">attachment;fileName="${filename}"</param>
+			<!-- 指定文件的缓存大小 -->
+			<param name="bufferSize">4000</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 限制文件上传的大小  -->
+	<constant name="strutrs.multiart.maxSize" value="20971520"/>
+	<!-- 访问/WEB-INF目录下的jsp页面 -->
+	<package name="file" extends="struts-default">
+	<action name="toUpload">
+	   <result>
+	    /WEB-INF/upload.jsp
+	   </result>
+	</action>
+	
+	<!-- 处理文件上传 -->
+	<action name="upload" class="com.lanou.action.UploadAction" method="upload">
+	<result name="success">
+	/WEB-INF/ok.jsp
+	</result>
+	</action>
+	</package>
+
+</struts>

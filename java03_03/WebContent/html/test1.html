@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax请求</title>
+</head>
+<body>
+	账号:
+	<input type="text" name="username" class="input1">
+	<br> 
+	密码:
+	<input type="text" name="psw" class="input2">
+	<br>
+	<input type="button" value="登录" class="div3">
+	
+</body>
+ <script src="../js/jquery-2.2.4.min.js" type="text/javascript" charset="utf-8"></script>
+ <script type="text/javascript">
+   var input1 = document.querySelector(".input1");
+   var input2 = document.querySelector(".input2");
+   var div3 = document.querySelector(".div3");
+   div3.onclick = function(){
+	   var v1 = input1.value;
+	   var v2 = input2.value;
+	   $.ajax({
+		   	type:"get",
+		   	url:"http://localhost:8080/java03_03/test_method2",
+		   	async:true,
+		   	data:{
+		   		one:v1,
+		   		two:v2
+		   	},
+		   	success:function (res) {
+		   		console.log(res);
+		   	}
+		   });
+	   
+   }
+   
+   </script>
+</html>

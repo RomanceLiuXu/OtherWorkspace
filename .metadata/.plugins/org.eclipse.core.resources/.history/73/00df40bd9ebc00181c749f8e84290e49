@@ -1,0 +1,33 @@
+package com.lanou.cglib;
+
+import java.lang.reflect.Method;
+
+import org.springframework.cglib.proxy.Enhancer;
+import org.springframework.cglib.proxy.MethodInterceptor;
+import org.springframework.cglib.proxy.MethodProxy;
+
+/**
+ *
+ * @author LiuXu
+ * @time2018年9月20日下午2:28:17
+ **/
+
+public class ProxyFactory implements MethodInterceptor{
+
+	private Object real;
+	
+	public Object getProxy(){
+		Enhancer enhancer = new Enhancer();
+		enhancer.setSuperclass(real.getClass());
+		enhancer.setCallback(this);
+		return enhancer.create();
+	}
+	
+	
+	@Override
+	public Object intercept(Object arg0, Method arg1, Object[] arg2, MethodProxy arg3) throws Throwable {
+		
+		return null;
+	}
+
+}

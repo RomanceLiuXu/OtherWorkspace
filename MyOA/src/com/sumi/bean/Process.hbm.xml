@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sumi.bean.myProcess" table="process">
+		<id name="id" type="int" column="id">
+			<generator class="native" />
+		</id>
+		<property name="proName" type="string" column="pro_name" />
+		<property name="proDes" type="string" column="pro_des" />
+		<property name="proLevel" type="int" column="pro_level" />
+		<property name="proStatus" type="int" column="pro_status" />
+		<property name="proDate" type="java.util.Date" column="create_time" />
+		<many-to-one name="employee" class="com.sumi.bean.Employee" column="c_uid" cascade="save-update" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>
+

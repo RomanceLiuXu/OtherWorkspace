@@ -1,0 +1,10 @@
+1537350674220	Rename resource 'SqlMapConfig.xml'
+1537358093767	Copy compilation unit
+1537358099959	Delete element
+1537361992063	Rename resource 'applicationContext.xml'
+1537362130999	Rename resource 'MyBatis-config.xml'
+1537406414768	Copy file
+1537407027655	Copy file
+1537408375493	Rename type 'EmpService'
+1537408385162	Rename type 'EmpServiceDao'
+1537409290625	Move 'list.jsp' to 'WEB-INF'

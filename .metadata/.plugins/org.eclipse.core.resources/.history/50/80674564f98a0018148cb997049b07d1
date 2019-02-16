@@ -1,0 +1,79 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.lanou.bean.Car"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!-- uri:路径  prefix:指的是标签头-->
+<%@  taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=UTF-8>
+<title>JSTL</title>
+</head>
+<body>
+	<%
+		List<Car> cars = new ArrayList<Car>();
+		Car car1 = new Car(1, "aa");
+		Car car2 = new Car(2, "bb");
+		Car car3 = new Car(3, "cc");
+		Car car4 = new Car(4, "ee");
+		Car car5 = new Car(5, "ff");
+		cars.add(car1);
+		cars.add(car2);
+		cars.add(car3);
+		cars.add(car4);
+		cars.add(car5);
+		request.setAttribute("cars", cars);
+		int a = 2;
+		request.setAttribute("a", a);
+	%>
+	<%
+		List<Car> lists = (List<Car>) request.getAttribute("cars");
+	%>
+	<%
+		for (int i = 0; i < lists.size(); i++) {
+			Car car = lists.get(i);
+			request.setAttribute("car", car);
+	%>
+	<div>${car.type }</div>
+	<%
+		}
+	%>
+
+	<!-- 迭代标签 forEach-->
+
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>type</th>
+			</tr>
+		</thead>
+		<tbody>
+		<!-- 
+		items：集合对象
+		var:集合在的单个对象
+		begin:循环开始的位置 (包含)
+		end:循环结束的位置（包含）
+		 -->
+		
+		<c:forEach items="${cars }" var="car">
+		<tr>
+				<td>${car.id }</td>
+				<td>${car.type }</td>
+		</tr>
+		</c:forEach>
+        <c:forEach items="${cars }" var="car" begin="0" end="1" step="">
+        <tr>
+				<td>${car.id }</td>
+				<td>${car.type }</td>
+        
+        </c:forEach>
+        
+			<tr></tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

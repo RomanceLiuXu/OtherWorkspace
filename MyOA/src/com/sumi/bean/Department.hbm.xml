@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sumi.bean.Department" table="department">
+		<!-- 主键 -->
+		<id name="did" type="int" column="did">
+			<generator class="native" />
+		</id>
+		<!-- 非主键字段 -->
+		<property name="dname" type="string" column="dname" />
+		<!-- 一对多 -->
+		<set name="employees" cascade="save-update" lazy="false">
+			<key column="did" />
+			<one-to-many class="com.sumi.bean.Employee" />
+		</set>
+	</class>
+</hibernate-mapping>
+

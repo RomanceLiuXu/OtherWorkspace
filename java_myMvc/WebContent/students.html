@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>学生-分页</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<style type="text/css">
+caption {
+	text-align: center;
+	font-size: 30px;
+	color: red;
+}
+
+th, td {
+	height: 50px;
+	text-align: center;
+	padding: 20px;
+}
+
+#wrap {
+	width: 750px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+nav {
+	width: 400px;
+	margin: 0 auto;
+	text-align: center;
+}
+</style>
+
+</head>
+
+<body>
+	<div id="wrap">
+		<table border="1px" cellpadding="20px"style="border-collapse: collapse;">
+			<caption>表格</caption>
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>id</th>
+					<th>name</th>
+					<th>数学</th>
+					<th>语文</th>
+					<th>英语</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+			</tbody>
+		</table>
+
+		<!--分页-->
+		<nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li class="active"><a>1</a></li>
+			</ul>
+		</nav>
+	</div>
+</body>
+
+<script src="js/jquery-2.2.4.min.js" type="text/javascript"
+	charset="utf-8"></script>
+<script type="text/javascript">
+	var tbody = document.querySelector("tbody");
+	//页面加载完成请求数据
+	window.onload = function() {
+		method(1);
+	}
+
+	//设置页码的点击事件
+	var ul = document.querySelector("ul");
+	var arrli = new Array();
+	//获取所有的a标签
+	for (var i = 0; i < ul.children.length; i++) {
+		arrli.push(ul.children[i].children[0]);
+	}
+
+	//设置点击事件
+	for (var i = 0; i < arrli.length; i++) {
+		arrli[i].onclick = function() {
+			method1();
+			//给点击的li设置active样式
+			this.parentElement.setAttribute("class", "active");
+			//清空tbody数据
+			method2();
+			//请求数据
+			console.log(this.innerText);
+			method(this.innerText);
+		}
+	}
+
+	//清除li中的class=active属性
+	function method1() {
+		var arrli1 = new Array();
+		for (var j = 0; j < ul.children.length; j++) {
+			arrli1.push(ul.children[j].children[0]);
+		}
+		
+		for (var i = 0; i < arrli1.length; i++) {
+			arrli1[i].parentElement.setAttribute("class", "");
+		}
+	}
+
+	//清空tbody中的数据
+	function method2() {
+		tbody.innerHTML = "";
+	}
+
+	var fnum = 1;
+	//获取数据的方法
+	function method(page) {
+		var req = new XMLHttpRequest();
+		req.open("GET", "student?page=" + page, true);
+		req.send();
+		req.onreadystatechange = function() {
+			if (req.readyState == 4 && req.status == 200) {
+				var res = req.response;
+				var result = JSON.parse(res);
+				//绘制页面
+				if (fnum == 1) {
+					pagenum(result.pagenum);
+					fnum++;
+				}
+
+				var arr = result.content;
+				//遍历
+				for (var i = 0; i < arr.length; i++) {
+					var tr = document.createElement("tr");
+					var index = document.createElement("td");
+					var id = document.createElement('td');
+					var name = document.createElement('td');
+					var math = document.createElement('td');
+					var chese = document.createElement('td');
+					var english = document.createElement('td');
+					//填充内容
+					index.innerText = i;
+					id.innerText = arr[i].id;
+					name.innerText = arr[i].name;
+					math.innerText = arr[i].math;
+					chese.innerText = arr[i].chese;
+					english.innerText = arr[i].english;
+					//将td添加到tr中
+					tr.appendChild(index);
+					tr.appendChild(id);
+					tr.appendChild(name);
+					tr.appendChild(math);
+					tr.appendChild(chese);
+					tr.appendChild(english);
+					//将tr添加到tbody中
+					tbody.appendChild(tr);
+				}
+			}
+		}
+	}
+
+	//绘制页码
+	function pagenum(num) {
+		//获取ul对象
+		var ul = document.getElementsByTagName("ul")[0];
+		for (var i = 2; i < num + 1; i++) {
+			var li1 = document.createElement("li");
+			var a1 = document.createElement("a");
+			a1.innerText = i;
+			li1.appendChild(a1);
+			ul.appendChild(li1)
+
+			a1.onclick = function() {
+				method1();
+				//给点击的li设置active样式
+				this.parentElement.setAttribute("class", "active");
+				//清空tbody数据
+				method2();
+				//请求数据
+				console.log(this.innerText);
+				method(this.innerText);
+			}
+
+		}
+
+	}
+</script>
+
+</html>

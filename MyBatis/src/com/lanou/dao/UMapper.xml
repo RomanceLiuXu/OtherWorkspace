@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+ 	<!-- 测试$和# -->
+	<mapper namespace="u">
+	<!-- 根据名字查找一个user对象 -->
+	<select id="findUserByName" parameterType="string" resultType="user">
+		select * from user where username=${value}
+	</select>
+	<!-- 根据账号和密码查询一个用户信息 -->
+	<select id="findUserByNameAndPwd" parameterType="map" resultType="user">
+		select * from user where username=${username} and password=${password}
+	</select>
+	<select id="findAll" parameterType="string" resultType="user">
+		select * from ${value} order by age	
+	</select>
+	</mapper>

@@ -1,0 +1,50 @@
+package com.liuxu.myTest;
+
+import org.jfree.chart.ChartPanel;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+
+/**
+ *
+ * @author LiuXu
+ * @time2018年9月26日下午2:08:21
+ **/
+public class myJfreechart {
+
+	private ChartPanel chartPanel;
+
+	
+	public static CategoryDataset getDataset(){
+		
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		dataset.setValue(100, "北京", "苹果");
+		dataset.setValue(20, "上海", "香蕉");
+		dataset.setValue(50, "陕西", "荔枝");
+		dataset.setValue(400, "山西", "西瓜");
+		dataset.setValue(200, "广州", "葡萄");
+		dataset.setValue(300, "武汉", "梨子");
+		dataset.setValue(90, "武汉", "梨子");
+		dataset.setValue(400, "武汉", "梨子");
+		return dataset;
+		
+	}
+	
+	
+	public myJfreechart() {
+		super();
+	}
+
+	public myJfreechart(ChartPanel chartPanel) {
+		super();
+		this.chartPanel = chartPanel;
+	}
+
+	public ChartPanel getChartPanel() {
+		return chartPanel;
+	}
+
+	public void setChartPanel(ChartPanel chartPanel) {
+		this.chartPanel = chartPanel;
+	}
+
+}

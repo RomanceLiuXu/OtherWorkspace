@@ -1,0 +1,22 @@
+1534303680198	Rename type 'User'
+1534304055919	Rename resource 'User.hbm.xml'
+1534317653249	Extract method 'add'
+1534338881036	Copy package
+1534401753080	Copy compilation unit
+1534401766835	Delete element
+1534401966527	Copy file
+1534412418056	Copy file
+1534412439625	Copy file
+1534492238731	Copy file
+1534492953990	Copy file
+1534493031447	Rename resource 'Book.hbm.xml'
+1534493051711	Rename resource 'Employee.hbm.xml'
+1534493058463	Rename resource 'Employee1.hbm.xml'
+1534498674616	Copy file
+1534499085410	Copy file
+1534499259147	Copy compilation unit
+1534509266294	Rename type 'Test4'
+1534558406404	Copy files
+1534558445884	Copy file
+1534558547541	Copy file
+1534569048020	Copy compilation unit

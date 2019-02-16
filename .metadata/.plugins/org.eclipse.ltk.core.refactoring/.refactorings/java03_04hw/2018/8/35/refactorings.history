@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.lanou.util&apos; to &apos;Poi/src&apos;&#x0A;- Original project: &apos;java03_04hw&apos;&#x0A;- Destination element: &apos;Poi/src&apos;&#x0A;- Original element: &apos;java03_04hw/src/com.lanou.util&apos;" description="Copy package" destination="=Poi/src" element1="/src&lt;com.lanou.util" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1535352971822" version="1.0"/>
+</session>

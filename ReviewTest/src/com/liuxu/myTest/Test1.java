@@ -1,0 +1,72 @@
+package com.liuxu.myTest;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
+/**
+ * 测试switch作用范围
+ * 
+ * @author LiuXu
+ * @time2018年9月17日下午9:59:31
+ **/
+public class Test1 {
+
+	public static int a = 0;
+
+	public static void main(String[] args) {
+		// byte a1 = 12;
+		// short a2 = 12;
+		// String a = "str";
+		// long aa = 12;
+		// int aaa = 12;
+		// double a3 = 12;
+		// switch (Day.Mondy) {
+		// case Mondy:
+		// System.out.println("存在");
+		// break;
+		//
+		// default:
+		// break;
+		// }
+
+		// System.out.println(myTry());
+
+		String s = "dadadqwdqfqfqcc";
+		// 定义map集合接收字符和它出现的次数
+		Map<Character, Integer> map = new HashMap<>();
+		for (int i = 0; i < s.length(); i++) {
+			// 获取每一位的字符
+			char c = s.charAt(i);
+			// 获取该字符出现的次数
+			Integer count = map.get(c);
+			if (count == null) {
+				// 第一次遇见到字符
+				count = 1;
+			} else {
+				// 否则在原来的基础上加1
+				count++;
+			}
+			// 将值赋值给map
+			map.put(c, count);
+		}
+		System.out.println(map);
+	}
+
+	public static int myTry() {
+		try {
+			System.out.println("哈哈哈");
+			a = 1;
+			return a;
+		} catch (Exception e) {
+			return 0;
+		} finally {
+			a = 2;
+		}
+	}
+
+}
+
+enum Day {
+	Mondy
+}

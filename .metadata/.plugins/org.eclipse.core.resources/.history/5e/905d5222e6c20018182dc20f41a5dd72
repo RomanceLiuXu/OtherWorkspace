@@ -1,0 +1,13 @@
+package com.lanou.controller;
+
+import org.springframework.stereotype.Controller;
+
+/**
+*
+* @author LiuXu
+* @time2018年9月28日下午2:15:42
+**/
+@Controller
+public class EchartController {
+
+}

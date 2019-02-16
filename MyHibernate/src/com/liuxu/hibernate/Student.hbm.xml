@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate的映射文件 一对多一方的映射文件 -->
+<hibernate-mapping>
+	<class name="com.liuxu.hibernate.Student" table="student">
+		<!-- 主键映射 -->
+		<id name="sid" type="int">
+			<column name="s_id" />
+			<!-- 主键的生成策略 -->
+			<generator class="assigned" />
+		</id>
+		<!-- 其他字段的映射 -->
+		<property name="name" type="java.lang.String">
+			<column name="s_name" />
+		</property>
+		<!-- 一对多关系映射 -->
+		<set name="books" lazy="false" cascade="all">
+			<key column="b_studentid" />
+			<one-to-many class="com.liuxu.hibernate.Book" />
+		</set>
+	</class>
+
+</hibernate-mapping>

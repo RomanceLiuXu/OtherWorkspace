@@ -1,0 +1,176 @@
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.lanou.bean.Car"%>
+<%@page import="com.lanou.bean.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=UTF-8>
+<title>标题</title>
+</head>
+<body>
+
+	<%
+		request.setAttribute("one", "aa");
+	%>
+
+	<%-- 
+EL:表达式语言
+
+格式${}
+
+使用EL表达式获取容器中的值
+${one}--相当于pageContext.findattribute("one");
+获取特定容器中的值:
+${容器名Scope.属性名}
+	--相当于pagecontext.getAttribute("属性名","标识");
+	--也相当于 :容器名.getAttribute("属性名"); --%>
+
+
+	<div>${one }</div>
+	<div>${requestScope.one }</div>
+
+	<%--设置值(java代码，应放在view层之外的其他层结构中) --%>
+	<%
+		User user = new User(1, "lhl1", "123");
+		//实例化
+		Car car = new Car(1, "大众");
+		//添加到user中
+		user.setCar(car);
+		//将user对象设置到request容器中
+		request.setAttribute("user", user);
+
+		//集合
+		List<Car> cars = new ArrayList<Car>();
+		Car car1 = new Car(2, "保时捷");
+		Car car2 = new Car(3, "雷克萨斯");
+		cars.add(car);
+		cars.add(car1);
+		cars.add(car2);
+		request.setAttribute("cars", cars);
+
+		//map
+		Map<String, Car> maps = new HashMap();
+		maps.put("one", car);
+		maps.put("two", car1);
+		request.setAttribute("maps", maps);
+
+		//数组
+		Car[] arr = { car1, car2 };
+		request.setAttribute("arr", arr);
+
+		//Set
+		Set<Car> sets = new HashSet<Car>();
+		sets.add(car1);
+		sets.add(car2);
+		request.setAttribute("sets", sets);
+		//变量
+		int a = 10;
+		request.setAttribute("a", a);
+
+		//四大作用域对象(容器)
+		// 		request -- requestScope
+		// 		application--applicationScope
+		// 		session--sessionScope
+		// 		pageContext--pageScope
+		pageContext.setAttribute("pc", "ss");
+
+		String str1 = "aa";
+		String str2 = "bb";
+
+		request.setAttribute("str1", str1);
+		request.setAttribute("str2", str2);
+
+		int num1 = 10, num2 = 20;
+		request.setAttribute("num1", num1);
+		request.setAttribute("num2", num2);
+	%>
+	<div><%=user.getName()%></div>
+	<div>${user.name }</div>
+	<div>${user["name"] }</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>名称</th>
+				<th>值</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- 获取对象的属性 -->
+			<tr>
+				<td>user.name</td>
+				<td>${user.name }</td>
+			</tr>
+			<tr>
+				<td>car.type</td>
+				<td>${user.car.type }</td>
+				<td>${user["car"]["type"] }</td>
+			</tr>
+			<tr>
+				<td>list</td>
+				<td>${cars[0].type }</td>
+				<td>${cars.get(1).type }</td> 
+			</tr>
+			<tr>
+				<td>map</td>
+				<td>${maps.one.type }</td>
+			</tr>
+			<tr>
+				<td>arr</td>
+				<td>${arr[1].type }</td>
+			</tr>
+			<tr>
+				<td>sets</td>
+				<td>${sets.iterator().next().type }</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>${a }</td>
+			</tr>
+			<!-- url传递的参数（?后的key=value）
+			${param}==>{kay=value1,key1=value1}
+			 -->
+			<tr>
+				<td>param</td>
+				<td>${param.username }</td>
+			</tr>
+			<!-- url传递的参数（?后的key=value）
+			${paramValues}==>{key1=[value1,key2=value2],key2=[value1,key2=value2],..}
+			 -->
+			<!-- 设计为数组的原因:相同的key值可以有带不同的value值 -->
+			<tr>
+				<td>paramValues</td>
+				<td>${paramValues.username[0] }</td>
+			</tr>
+			<tr>
+				<td>pageContext</td>
+				<td>${pageScope.pc }</td>
+			</tr>
+			<tr>
+				<td>字符串拼接</td>
+				<td>${str1 }${str2 }</td>
+			</tr>
+			<tr>
+				<td>加法</td>
+				<td>${num1+num2 }</td>
+			</tr>
+			<tr>
+				<td>除法(求商)</td>
+				<td>${num1+num2 }</td>
+			</tr>
+			
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+	</table>
+
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- 一对多关联查询 多方-->
+<mapper namespace="com.lanou.dao.CardMapper">
+	<resultMap type="com.lanou.bean.Card" id="cardBean">
+		<id property="cid" column="cid"/>
+		<result property="cno" column="cno"/>
+		<result property="remark" column="remark"/>
+	<association property="people" javaType="com.lanou.bean.People">
+		<id property="pid" column="pid"/>
+		<result property="pname" column="pname"/>
+		<result property="address" column="address"/>
+	</association>
+	</resultMap>	
+
+	<select id="findCardById" parameterType="int" resultMap="cardBean">
+		select p.*,c.* from card c inner join people p on c.p_id = p.pid and c.cid=#{cid} 	
+	</select>
+</mapper>

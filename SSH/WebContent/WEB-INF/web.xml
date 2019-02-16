@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  
+  <!-- 配置监听器，监听spring应用的启动 
+  spring-web-4.2.5.RELEASE.jar/org.springframework.web.context
+  -->
+  <listener>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- spring应用启动时，加载spring配置文件，启动spring容器 -->
+  <context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <!-- 配置过滤器 -->
+  <filter>
+  <filter-name>ssh</filter-name>
+  <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>ssh</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 配置openSessionInViewFilter
+  将session打开关闭提到表现层，防止数据加载时，session已经关闭的异常
+  spring-orm-4.2.5.RELEASE.jar/org.springframework.orm.hibernate4.support
+   -->
+  <filter>
+  <filter-name>openSessionInView</filter-name>
+  <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+  <!-- 初始化参数，指定数据源，数据从哪延迟加载来的 -->
+  <init-param>
+  <param-name>sessionFactoryByBeanName</param-name>
+  <param-value>sessionFactory</param-value>
+  </init-param>
+  </filter>
+  <filter-mapping>
+  <filter-name>openSessionInView</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>

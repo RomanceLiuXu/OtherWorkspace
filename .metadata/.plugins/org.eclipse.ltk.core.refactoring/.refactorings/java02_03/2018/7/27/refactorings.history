@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SQLUtil2.java&apos; to &apos;java02_03/src/com.lanou&apos;&#x0A;- Original project: &apos;java02_03&apos;&#x0A;- Destination element: &apos;java02_03/src/com.lanou&apos;&#x0A;- Original element: &apos;com.lanou.SQLUtil2.java&apos;" description="Copy compilation unit" destination="/src&lt;com.lanou" element1="/src&lt;com.lanou{SQLUtil2.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1530534423967" units="1" version="1.0"/>
+</session>

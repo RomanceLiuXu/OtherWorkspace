@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+	
+	<mapper namespace="com.lanou.dao.TeamMapper">
+		<resultMap type="com.lanou.bean.Team" id="teamBean">
+		<id property="tid" column="tid"/>
+		<result property="tname" column="tname"/>
+		<result property="location" column="location"/>
+		<association property="manager" javaType="com.lanou.bean.Manager">
+			<id property="mid" column="mid"/>
+			<result property="mname" column="mname"/>
+		</association>
+		</resultMap>
+	<select id="findTeamById" parameterType="int" resultMap="teamBean">
+		select t.*,m.* from team t,manager m where t.tid=m.t_id and t.tid=#{id}
+	</select>
+	</mapper>

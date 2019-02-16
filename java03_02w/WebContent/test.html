@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js传值和ajax传值</title>
+</head>
+<body>
+	账号:
+	<input type="text" name="username" class="div1">
+	<br>
+	<input type="button" value="登录" class="div2">
+</body>
+<script src="js/jquery-2.2.4.min.js" type="text/javascript"
+	charset="utf-8"></script>
+<script type="text/javascript">
+	var div1 = document.querySelector(".div1");
+	var div2 = document.querySelector(".div2");
+	div2.onclick = function() {
+		var req = new XMLHttpRequest();
+		// 		req.open("GET","http://localhost:8080/java03_02w/jscheck?username="+div1.value);
+		req.open("POST", "http://localhost:8080/java03_02w/jscheck");
+		var data = "username=" + div1.value;
+		req.send(data);
+		req.onreadystatechange = function() {
+			if (req.readyState == 4 && req.status == 200) {
+				//获取结果
+				var res = req.response;
+
+				location.href = "home.html";
+			}
+
+		}
+	}
+
+	/* 
+	div2.onclick = function() {
+	 $.ajax({
+	 type:"post",
+	 url:"http://localhost:8080/java03_02w/jscheck",
+	 async:true,
+	 data:{
+	 username:div1.value
+	 },
+	 success:function(){
+		 location.href = "home.html";
+	 }
+	 }); 
+	} */
+</script>
+</html>

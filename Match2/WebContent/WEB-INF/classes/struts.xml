@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 打开国际化 -->
+	<constant name="struts.custom.i18n.resources" value="global" />
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="one" namespace="/" extends="json-default">
+		<interceptors>
+			<!-- 登录验证的拦截器 -->
+			<interceptor name="login" class="com.match.interceptor.UserInterceptor"></interceptor>
+		</interceptors>
+		<!-- 登录的接口 -->
+		<action name="login" class="com.match.action.UserAction" method="login">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="login"></interceptor-ref>
+			<result name="success" type="json">
+				<param name="root">userP</param>
+			</result>
+		</action>
+		<!-- 发送验证码的接口 -->
+		<action name="email" class="com.match.action.MailAction" method="emailSend">
+		<result name="success" type="json">
+		<param name="root">message</param>
+		</result>
+		</action>
+	</package>
+
+    <package name="two" namespace="/" extends="struts-default">
+       <!-- 主页面显示所有人员信息 -->
+		<action name="home_*" class="com.match.action.UserAction" method="{1}">
+			<result name="success" type="redirect">
+				http://localhost:8080/Match/jsp/home.jsp
+			</result>
+			
+			<result name="error">
+			http://localhost:8080/Match/jsp/login.jsp
+			</result>
+			
+			<!-- 同城匹配 -->
+			<result name="select">
+			/jsp/select.jsp
+			</result>
+			
+			<!-- 异城匹配 -->
+			<result name="select2">
+			/jsp/select2.jsp
+			</result>
+			
+			<!-- 人员详细信息中心 -->
+			<result name="personal">
+			 /jsp/personal.jsp
+			</result>
+			
+		</action>
+		
+		<!--注册的action -->
+		<action name="register_*" class="com.match.action.RegisterAction" method="{1}">
+		<result name="success">
+		<!-- 注册成功去到头像上传页面 -->
+		/jsp/photoup.jsp
+		</result>
+		
+		<result name="error">
+		/jsp/Reginster.jsp
+		</result>
+		
+		<result name="upok">
+		/jsp/photoupsuccess.jsp
+		</result>
+		
+		<result name="upfalse">
+		/jsp/photoup.jsp
+		</result>
+		</action>
+		
+      <action name="password_*" class="com.match.action.PasswordAction" method="{1}">
+      
+      <result name="equal">
+           
+      </result>
+      
+      </action>
+      
+      <action name="emailCheck" class="com.match.action.MailAction" method="emailCheck">
+       <result name="success">
+         /jsp/home.jsp
+       </result>
+       <result name="error">
+        /jsp/login.jsp
+       </result>
+      </action>
+      
+<!--       <action name="validate" class="com.match.action.ValidateCode"> -->
+<!--       <result>/validateCode.do</result> -->
+<!--       </action> -->
+      
+    </package>
+
+</struts>

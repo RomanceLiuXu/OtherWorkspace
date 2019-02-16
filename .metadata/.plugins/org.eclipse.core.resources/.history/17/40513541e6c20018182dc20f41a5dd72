@@ -1,0 +1,19 @@
+package com.lanou.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+*
+* @author LiuXu
+* @time2018年9月28日下午2:15:42
+**/
+@Controller
+public class EchartController {
+
+	@RequestMapping("showChart.do")
+	public String show(){
+		return "showChart";
+	}
+	
+}

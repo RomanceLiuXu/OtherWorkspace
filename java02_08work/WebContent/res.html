@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>显示登录结果</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var url = location.href;
+		var str = url.split("?")[1].split("=")[1];
+		document.getElementsByTagName("body")[0].innerText = str;
+	</script>
+
+</body>
+</html>

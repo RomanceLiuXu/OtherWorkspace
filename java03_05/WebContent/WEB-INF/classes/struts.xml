@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="one" namespace="/" extends="struts-default">
+		<!-- 配置拦截器 -->
+		<!-- interceptors：配置拦截器和拦截器栈的容器标签 -->
+		<!-- interceptor name:名字（给拦截器起的名字，方便action中的引用） class:拦截器对应的路径(包名+类名) -->
+		<interceptors>
+
+			<interceptor name="one" class="com.lanou.interceptor.TestInterceptor"></interceptor>
+			<interceptor name="two"
+				class="com.lanou.interceptor.Test2Interceptor"></interceptor>
+			<interceptor name="three"
+				class="com.lanou.interceptor.Test3Interceptor"></interceptor>
+			<interceptor name="lx" class="com.liuxu.interceptor.LxInterceptor"></interceptor>
+			<interceptor name="four"
+				class="com.lanou.interceptor.Test4Interceptor">
+				<!-- 全局的 -->
+				<!-- 不需要过拦截器 -->
+				<!-- <param name="excludeMethods">method1</param> -->
+				<!-- 需要经过拦截器 -->
+<!-- 				<param name="includeMethods">method1</param> -->
+
+			</interceptor>
+			
+			<!--配置拦截器栈 -->
+			<interceptor-stack name="onestack">
+			<interceptor-ref name="one"></interceptor-ref>
+			<interceptor-ref name="two"></interceptor-ref>
+			</interceptor-stack>
+
+		</interceptors>
+
+
+		<action name="test1" class="com.lanou.action.TestAction"
+			method="method1">
+			<!-- interceptor-ref:引用拦截器和拦截器栈 name:引用的拦截器的名字 -->
+			<interceptor-ref name="one"></interceptor-ref>
+
+			<result name="success">
+				/jsp/test1.jsp
+			</result>
+			<result name="error">
+				/jsp/error.jsp
+			</result>
+		</action>
+
+		<action name="lxtest" class="com.liuxu.action.LxAction" method="LxMethod">
+			<interceptor-ref name="lx"></interceptor-ref>
+			<result name="success">
+				/jsp/test1.jsp
+			</result>
+
+		</action>
+
+		<action name="test2" class="com.lanou.action.TestAction"
+			method="method1">
+			<interceptor-ref name="two"></interceptor-ref>
+			<result name="success">
+				/jsp/test1.jsp
+			</result>
+		</action>
+
+		<action name="user_*" class="com.lanou.action.TestAction3"
+			method="method1">
+			<interceptor-ref name="three"></interceptor-ref>
+			<result name="login">
+				/jsp/login.jsp
+			</result>
+			<result name="home">
+				/jsp/home.jsp
+			</result>
+
+			<result name="error">
+				/jsp/error.jsp
+			</result>
+		</action>
+
+		<action name="test4_*" class="com.lanou.action.TestAction4" method="{1}">
+
+			<interceptor-ref name="four">
+				<!-- 局部的 -->
+				<!-- 指定哪些请求的方法不需要经过拦截器 -->
+				<!-- <param name="excludeMethods">method1</param> -->
+				<!-- 指定哪些请求的方法需要经过拦截器,处了给出的方法之外其他的不经过拦截器 -->
+				<!-- <param name="includeMethods">method1,method2</param> -->
+			</interceptor-ref>
+
+			<result name="success">
+				/jsp/test1.jsp
+			</result>
+
+		</action>
+         
+         <action name="test5_*" class="com.lanou.action.TestAction5" method="{1}">
+           
+          <interceptor-ref name="onestack"></interceptor-ref>
+           <result name="success">
+           /jsp/home.jsp
+           
+           </result>
+         
+       
+         
+         </action>
+
+
+	</package>
+
+</struts>

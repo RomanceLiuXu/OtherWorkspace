@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;reginster.js&apos; to &apos;js&apos;&#x0A;- Original project: &apos;MyJsp&apos;&#x0A;- Destination element: &apos;js&apos;&#x0A;- Original element: &apos;reginster.js&apos;" description="Copy file" element1="WebContent/js/reginster.js" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1533289869957" target="/Match2/WebContent/js" units="0" version="1.0"/>
+</session>

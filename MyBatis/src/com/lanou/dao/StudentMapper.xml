@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- 一对多关联查询 多方-->
+<mapper namespace="com.lanou.dao.StudentMapper">
+<resultMap type="com.lanou.bean.Student" id="studentBean">
+	<id property="sid" column="sid"/>
+	<result property="sname" column="sname"/>
+	<result property="sex" column="sex"/>
+<!-- 定义对方实体类属性和表字段之间的映射关系 -->
+<collection property="teachers" ofType="com.lanou.bean.Teacher">
+	<id property="tid" column="tid"/>
+	<result property="tname" column="tname"/>
+	<result property="xueke" column="xueke"/>
+</collection>
+</resultMap>
+<!-- 根据id查找当前student对象，以及它所关联的teacher集合数据 -->
+<select id="findStudentById" parameterType="int" resultMap="studentBean">
+	select t.*,s.* from teacher t ,student s where t.s_id=s.sid and s.sid=#{sid}
+</select>
+</mapper>

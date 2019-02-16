@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate映射文件  一对一的配置文件-->
+<hibernate-mapping>
+	<!-- 数据表和实体类之间的映射 name:实体类全限定名 table:数据库中表名 -->
+	<class name="com.lanou.bean.User" table="user">
+	<id name="uid" type="int" column="uid">
+	<generator class="assigned"></generator>
+	</id>
+<property name="uname" type="string" column="uname"></property>
+<property name="uaddress" type="string" column="uaddress"></property>
+<!-- 一对一映射
+	name:当前实体类描述对方的实体类属性名
+	class:对方实体类全限定名
+ -->
+<one-to-one name="card" class="com.lanou.bean.Card" cascade="all" lazy="false"></one-to-one>
+	</class>
+</hibernate-mapping>

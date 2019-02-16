@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+	<!-- 接口返回json数据 1.导入:struts2-json-plugin-2.3.16.1.jar这个包 2. package extends: 
+		继承于json-default 3.result type:json 4.<param name="root"> </param> -->
+	<package name="one" namespace="/" extends="json-default">
+		<action name="test_*" class="com.lanou.action.TestAction"
+			method="{1}">
+			<result name="success" type="json">
+				<param name="root">
+					msg
+				</param>
+			</result>
+			<result name="true" type="json">
+				<param name="root">
+					person
+				</param>
+			</result>
+			<result name="success3" type="json">
+				<param name="root">
+					persons
+				</param>
+			</result>
+			<result name="success4" type="json">
+				<param name="root">
+					maps
+				</param>
+			</result>
+
+		</action>
+
+	</package>
+	<package name="test2" namespace="/" extends="struts-default">
+		<action name="test2_*" class="com.lanou.action.Test2Action"
+			method="{1}">
+			<result name="success" type="redirectAction">
+				test_method2
+			</result>
+		</action>
+		<action name="test3_*" class="com.lanou.action.Test3Action"
+			method="{1}">
+			<result name="success">
+				jsp/demo1.jsp
+			</result>
+
+		</action>
+		<action name="test4_*" class="com.lanou.action.Test4Action"
+			method="{1}">
+			<result name="success">
+				jsp/demo2.jsp
+			</result>
+		</action>
+
+		<action name="test5_*" class="com.lanou.action.Test5Action" method="{1}">
+			<result name="success">
+				jsp/demo3.jsp
+			</result>
+		</action>
+		<action name="test6_*" class="com.lanou.action.Test6Action" method="{1}">
+			<result name="success">
+				/jsp/demo3.jsp
+			</result>
+		</action>
+		<action name="test7_*" class="com.lanou.action.Test7Action" method="{1}">
+			<result name="success">
+				/jsp/demo3.jsp
+			</result>
+		</action>
+		<action name="test8_*" class="com.lanou.action.Test8Action" method="{1}">
+			<result name="success">
+				/jsp/demo3.jsp
+			</result>
+			<result name="input">
+			   jsp/demo4.jsp
+			</result>
+		</action>
+
+	</package>
+
+
+
+	<!-- 引入xml文件，和iframe类似 -->
+	<include file="example.xml" />
+
+
+
+</struts>

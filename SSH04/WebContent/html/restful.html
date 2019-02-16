@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<button onclick="findAll()">查找所有Emp对象</button>
+<button onclick="findEmpById()">查找id为5的员工对象</button>
+<button onclick="deleteEmpById()">删除id为5的员工对象</button>
+<form action="" id="addForm">
+<fieldset>
+<label>添加员工</label><br/>
+姓名：<input type="text" name="uname"/><br/>
+性别<br/> 
+男:<input type="radio" name="gender" value="m"/><br/>
+女:<input type="radio" name="gender" value="f"/><br/>
+年龄:<input type="number" name="age"/><br/>
+<input type="button" value="添加" onclick="addEmp()"/>
+</fieldset>
+</form>
+<form action="" id="updateForm">
+<fieldset>
+<label>修改员工</label><br/>
+姓名:<input type="text" name="uname"/><br/>
+性别<br/>男:<input type="radio" name="gender" value="m"/><br/>
+女:<input type="radio" name="gender" value="f"/><br/>
+年龄:<input type="number" name="age"/><br/>
+<input type="button" value="修改" onclick="updateEmp()"/>
+</fieldset>
+</form>
+
+</body>
+<script type="text/javascript" src="../js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="../js/jquery.serializeJson-min.js"></script>
+<script type="text/javascript">
+//添加员工信息
+function addEmp(){
+	$.ajax({
+		type:"post",
+		url:"/SSH04/emp/addEmp",//
+		data:$("#addForm").serialize(),
+		success:function(data){
+			console.log(data);
+		}
+	});
+}
+//修改员工信息
+function updateEmp(){
+	$.ajax({
+		type:"put",
+		url:"/SSH04/emp/updateEmp",//通过url将id参数携带过去
+		data:$("#updateForm").serialize(),
+		success:function(data){
+			console.log(data);
+		}
+	});
+}
+//根据id删除一个数据
+function deleteEmpById(){
+	$.ajax({
+		type:"delete",
+		url:"/SSH04/emp/4",//通过url将id参数携带过去
+		success:function(data){
+			console.log(data);
+		}
+	});
+}
+
+
+//根据id查找一个数据
+function findEmpById(){
+	$.ajax({
+		type:"get",
+		url:"/SSH04/emp/5",//通过url将id参数携带过去
+		success:function(data){
+			console.log(data);
+		}
+	});
+}
+
+//查找所有数据
+function findAll(){
+ $.ajax({
+	 type:"get",
+	 url:"/SSH04/emp/findAll",
+	 success:function(data){
+		 console.log(data);
+	 }
+ });	
+};
+
+</script>
+</html>

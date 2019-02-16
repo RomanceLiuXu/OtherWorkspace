@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+		<!--  -->
+		<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+		<!-- 开发者模式(是否处于一种开发的状态)，开启后报错更详细
+			注意：项目上线时(打war包时)需要改成false
+		-->
+		<constant name="struts.devMode" value="true" />
+		<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+		<constant name="struts.configuration.xml.reload" value="true"/>
+		<!-- 接口返回json数据
+			导入对应的jar包 struts2-json-plugin-2.3.16.1.jar
+			packacg下的extends需要继承于json-default
+			result中的type要变成json
+			param 参数：
+				name=“root” 固定写法
+		 -->
+		 
+		 <package name="test" extends="struts-default">
+		 	<action name="empAction" class="com.lanou.action.EmpAction" method="login">
+		 		<result name="success">/home.jsp</result>
+		 	</action>
+		 </package>
+		 
+	</struts>
+	

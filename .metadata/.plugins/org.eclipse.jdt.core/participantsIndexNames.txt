@@ -1,0 +1,7 @@
+INDEX VERSION 1.129
+/Users/xalo/Documents/oneworkspaces/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3405109964.index
+/WebWork/src
+/Users/xalo/Documents/oneworkspaces/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/218489514.index
+/WebContent/src
+/Users/xalo/Documents/oneworkspaces/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1370125882.index
+/Work0529/src

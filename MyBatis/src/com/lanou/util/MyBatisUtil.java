@@ -1,0 +1,30 @@
+package com.lanou.util;
+
+import java.io.InputStream;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.lanou.test.TestCase;
+
+/**
+ *
+ * @author LiuXu
+ * @time2018年9月17日下午2:21:36
+ **/
+public class MyBatisUtil {
+
+	public static SqlSessionFactory getSqlSessionFactory() {
+		// 1.获取sqlSessionFactory对象
+		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+		// 记载mybatis配置文件
+		// new FileInputStream("src/SqlMapConfig.xml") 不通用
+		// 通过类加载器对象获取一个流
+		InputStream in = TestCase.class.getClassLoader().getResourceAsStream("SqlMapConfig.xml");
+		// 每个应用对应唯一的一个SqlSessionFactory
+		// 可以用于构建SqlSesion对象和充当二级缓存
+		SqlSessionFactory factory = builder.build(in);
+		return factory;
+	}
+
+}

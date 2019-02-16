@@ -1,0 +1,9 @@
+package com.lanou.controller;
+/**
+*
+* @author LiuXu
+* @time2018年9月28日下午2:15:42
+**/
+public class EchartController {
+
+}

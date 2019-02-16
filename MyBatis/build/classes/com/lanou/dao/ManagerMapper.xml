@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+	
+	<mapper namespace="com.lanou.dao.ManagerMapper">
+	<!-- 一对一的级联映射 
+		type:当前实体类全限定名
+		id:当前映射结果id
+	-->
+		<resultMap type="com.lanou.bean.Manager" id="managerBean" >
+		<!-- 当前实体类属性和表字段之间映射关系 -->
+			<id property="mid" column="mid"/>
+			<result property="mname" column="mname"/>
+			<!-- association
+				表示对方的实体类属性和表字段之间映射关系
+				property：当前实体类在用于描述对方的实体类属性名
+				javaType：对方实体类权限名
+			 -->
+			<association property="team" javaType="com.lanou.bean.Team">
+				<id property="tid" column="tid"/>
+				<result property="tname" column="tname"/>
+				<result property="location" column="location"/>
+			</association>
+		</resultMap>
+		<!-- 根据id查找一个Manager对象以及它所关联的team对象 -->
+		<select id="findManagerById" parameterType="int" resultMap="managerBean">
+			select manager.*,team.* from manager,team where manager.mid=team.m_id and manager.mid=#{id} 
+		</select>
+		
+		
+		
+		
+		
+		
+		
+		
+	</mapper>

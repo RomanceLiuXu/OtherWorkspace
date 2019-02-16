@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate的映射文件 一对多一方的映射文件 -->
+<hibernate-mapping>
+	<class name="com.liuxu.hibernate.Project	" table="project">
+		<!-- 主键映射 -->
+		<id name="pid" type="int">
+			<column name="p_id" />
+			<!-- 主键的生成策略 -->
+			<generator class="assigned" />
+		</id>
+		<!-- 其他字段的映射 -->
+		<property name="pname" type="java.lang.String">
+			<column name="p_name" />
+		</property>
+		<!-- 一对多关系映射 -->
+		<set name="employees" lazy="false" cascade="all" table="proemp">
+			<key column="proid" />
+			<many-to-many class="com.liuxu.hibernate.Employee" column="empid"></many-to-many>
+		</set>
+	</class>
+
+</hibernate-mapping>

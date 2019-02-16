@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	
+	<package name="one" namespace="/" extends="json-default">
+		<!-- 记录打卡的次数 -->
+		<action name="attendAction" class="com.sumi.action.AttendAction"
+			method="checkAttend">
+			<result name="check_suc" type="json">
+				<param name="root">num</param>
+			</result>
+		</action>
+		<!-- 发送短信验证码 -->
+		<action name="phoneCheckAction" class="com.sumi.action.EmployeeAction"
+			method="phoneCheck">
+			<result name="success" type="json">
+				
+			</result>
+		</action>
+		<!-- 删除一个部门 -->
+		<action name="deleteDeptAction" class="com.sumi.action.DeptAction"
+			method="deleteDeptByName">
+		<result name="success" type="json">
+		<param name="root">
+		 msg
+		</param>
+		</result>
+		</action>
+		<action name="deleteEmpAction" class="com.sumi.action.EmployeeAction" method="deleteEmp">
+		<result name="success" type="json">
+		<param name="root">
+		msg
+		</param>
+		</result>
+		</action>
+		
+	</package>
+
+	<package name="two" namespace="/" extends="struts-default">
+	<!-- 登录验证 -->
+		<action name="loginCheckAction" class="com.sumi.action.EmployeeAction"
+			method="loginCheck">
+			<result name="success">
+				/index.jsp
+			</result>
+			<result name="error">
+				login.jsp
+			</result>
+		</action>
+
+     <action name="addNewEmpAction" class="com.sumi.action.EmployeeAction" method="addNewEmp">
+     <result name="success" type="redirectAction">
+      employeeListsAction
+     </result>
+     </action>
+
+		<!-- 更新个人信息 -->
+		<!-- 更新个人信息提交后先到该接口，执行插入数据后，在跳转到查询接口，再跳转到个人中心展示页面展示数据 -->
+		<action name="updateEmpAction" class="com.sumi.action.EmployeeAction"
+			method="updateEmp">
+			<result name="success" type="redirectAction">
+			findEmpAction
+			</result>
+			<result name="error">
+			error.jsp
+			</result>
+		</action>
+		<!-- 个人资料编辑成功后先跳到该接口，再跳转到个人中心展示页面 -->
+		<action name="findEmpAction" class="com.sumi.action.EmployeeAction"
+			method="findEmp">
+			<result name="success">
+			/person.jsp
+			</result>
+		</action>
+		
+		<!-- 修改密码 -->
+		<action name="updatePswAction" class="com.sumi.action.EmployeeAction"
+			method="updatePsw">
+			<result name="success" type="redirectAction">
+				findEmpAction
+			</result>
+		</action>
+		<!-- 通讯录接口 -->
+		<action name="findMessageAction" class="com.sumi.action.EmployeeAction"
+			method="findMessage">
+		<result name="success">
+	     /message.jsp
+		</result>
+		</action>
+		<!-- 通讯录，通过姓名查找 -->
+		<action name="findEmpsByNameAction" class="com.sumi.action.EmployeeAction"
+			method="findEmpsByName">
+			<result name="success">
+				/message.jsp
+			</result>
+		</action>
+
+		
+
+		<!-- 分页查询 -->
+		<action name="employeeListsAction" class="com.sumi.action.EmployeeAction"
+			method="pageEmployee">
+			<result name="success">
+				user.jsp
+			</result>
+			<result name="NaN14">
+				error.jsp
+			</result>
+		</action>
+
+		<!-- 部门的操作的Action -->
+		<action name="deptAction_*" class="com.sumi.action.DeptAction"
+			method="{1}">
+			<result name="add_suc" type="redirectAction">
+				<!-- 到查询所有部门的action -->
+				deptAction_findDepartment
+			</result>
+			<result name="del_suc">
+				<!-- 到查询所有部门的action -->
+			</result>
+			<result name="find_suc">
+				<!-- 显示所有部门的信息 -->
+				dept.jsp
+			</result>
+			<result name="update_suc">
+			<!-- 修改某个员工的部门 -->
+			
+			</result>
+			
+			<result name="idD_suc">
+			<!-- 存取前端传来的id -->
+			 changeDept.jsp
+			</result>
+			
+			<result name="id_suc">
+			<!-- 存取前端传来的id -->
+			 updateRole.jsp
+			</result>
+			
+			<result name="role_suc" type="redirectAction">
+			employeeListsAction
+			</result>
+			
+			<result name="dept_suc" type="redirectAction">
+			employeeListsAction 
+			</result>
+		</action>
+
+		<!-- 权限的action -->
+		<action name="roleAction_*" class="com.sumi.action.RoleAction"
+			method="{1}">
+			<result name="add_suc" type="redirectAction">
+				<!-- 添加权限的action -->
+				roleAction_findRoles
+			</result>
+			<result name="find_suc">
+				<!-- 查询所有权限的action -->
+				role.jsp
+			</result>
+		</action>
+		<!-- 日历 -->
+		<action name="attendAction_*" class="com.sumi.action.AttendAction"
+			method="{1}">
+			<result name="success" type="redirect">
+				calendar.jsp
+			</result>
+
+		</action>
+		<!-- 流程的操作 -->
+		<action name="processAction_*" class="com.sumi.action.ProcessAction"
+			method="{1}">
+
+			<result name="add_suc" type="redirectAction">
+				processAction_findProcess
+			</result>
+
+			<result name="success" type="redirectAction">
+				processAction_findProcess
+			</result>
+           
+           <!-- 查询流程 -->
+		
+			<result name="find_suc">
+				info-mgt.jsp
+			</result>
+		
+          </action>
+          
+          	<!-- 主页面初始化 -->
+		<action name="homeAction" class="com.sumi.action.ProcessAction" method="findProcess">
+          	<!-- 主页面加载请求填充流程审批模块,管理员信息模块-->
+          	<result name="find_suc">
+          	home.jsp
+          	</result>
+		 
+		</action>
+		
+	</package>
+
+</struts>

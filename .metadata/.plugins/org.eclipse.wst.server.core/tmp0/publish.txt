@@ -1,0 +1,9 @@
+#Tomcat publish data
+#Fri Sep 28 14:57:37 CST 2018
+org.eclipse.jst.jee.server\:/binary\:/Users/xalo/Documents/oneworkspaces/SSM/WebContent/WEB-INF/lib/spring-web-4.2.5.RELEASE.jar=/Users/xalo/Library/tomcat/webapps/SSM/WEB-INF/lib/spring-web-4.2.5.RELEASE.jar
+org.eclipse.jst.jee.server\:SSM_orcl=/Users/xalo/Library/tomcat/webapps/SSM_orcl
+org.eclipse.jst.jee.server\:java03_04=/Users/xalo/Library/tomcat/webapps/java03_04
+org.eclipse.jst.jee.server\:/binary\:/Users/xalo/Documents/oneworkspaces/SSM_orcl/WebContent/WEB-INF/lib/spring-web-4.2.5.RELEASE.jar=/Users/xalo/Library/tomcat/webapps/SSM_orcl/WEB-INF/lib/spring-web-4.2.5.RELEASE.jar
+org.eclipse.jst.jee.server\:Echarts=/Users/xalo/Library/tomcat/webapps/Echarts
+org.eclipse.jst.jee.server\:SSM=/Users/xalo/Library/tomcat/webapps/SSM
+org.eclipse.jst.jee.server\:/binary\:/Users/xalo/Documents/oneworkspaces/Echarts/WebContent/WEB-INF/lib/spring-web-4.2.5.RELEASE.jar=/Users/xalo/Library/tomcat/webapps/Echarts/WEB-INF/lib/spring-web-4.2.5.RELEASE.jar

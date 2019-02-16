@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+		>
+	
+		<!-- 开启注解扫描 -->
+	<context:component-scan base-package="com.lanou"></context:component-scan>
+    <!-- 加载jdbc.properties配置文件 
+    web应用程序加载配置文件前面带上classpath，表明是去类路径下面加载
+    -->     
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<!-- 配置数据库连接池:c3p0  c3p0-0.9.1.jar  com.mchange.v2.c3p0 -->
+	<bean id="c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	<property name="jdbcUrl" value="${jdbc.url}"></property>
+	<property name="driverClass" value="${jdbc.driver}"></property>
+	<property name="user" value="${jdbc.username}"></property>
+	<property name="password" value="${jdbc.password}"></property>
+	<property name="maxPoolSize" value="50"></property>
+	</bean>
+	
+	<!-- 配置SessionFactoryBean
+	相当于hibernate.cfg.xml文件中的配置
+	主要用于构建SessionFactory对象
+	spring-orm-4.2.5.RELEASE.jar/org.springframework.orm.hibernate4
+	 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<!-- 加载数据源 必须配置 -->
+	<property name="dataSource" ref="c3p0"></property>
+	<!-- hibernate其他配置信息 -->
+	<property name="hibernateProperties">
+	<!-- 方言：必须配置 -->
+	 <props>
+	 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+	 <!-- 是否显示sql -->
+	 <prop key="hibernate.show_sql">true</prop>
+	 <!-- 是否格式化显示sql -->
+	 <prop key="hibernate.format_sql">true</prop>
+	 <!-- 开启二级缓存 -->
+	 <prop key="hibernate.cache.use_second_level_cache">true</prop>
+	 <!-- 指定二级缓存提供商  hibernate-ehcache-4.2.20.Final.jar/org.hibernate.cache.ehcache  -->
+	 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+	 <!-- 指定二级缓存配置文件 -->
+	 <prop key="hibernate.cache.configurationResourceName">ehcache.xml</prop>
+	 <!-- 开启查询缓存 -->
+	 <prop key="hibernate.cache.use_query_cache">true</prop>
+	 <!-- 给当前线程绑定事务 -->
+	 <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+	 </props>
+	</property>
+	
+	<!-- 关联映射文件 -->
+	<property name="mappingLocations">
+	<value>classpath:com/lanou/bean/*.hbm.xml</value>
+	</property>
+	</bean>
+	<!-- 配置HibernateTemplate,
+	 一个操作数据库的对象 spring-orm-4.2.5.RELEASE.jar/org.springframework.orm.hibernate4
+	 -->
+	<bean id="hibernateTemple" class="org.springframework.orm.hibernate4.HibernateTemplate">
+	<!-- 配置数据源 加载sessionFactory -->
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!--配置全局事务管理器
+	让spring管理项目中的事务
+	spring管理事务有两种方式：
+	1.编程式事务
+	直接在代码中开启事务和提交事务，控制灵活，不便于spring进行管理和维护
+	2.声明式事务（推荐）
+	使用springaop来对事务进行管理，使用xml配置或者注解来对事务进行配置，使业务逻辑和事务管理隔离，实现解耦合
+	spring-orm-4.2.5.RELEASE.jar/org.springframework.orm.hibernate4
+	  -->
+	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- 事务通知 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+	<!-- 配置事务的传播特性 
+	多个事务方法相互调用，事务如何在这些方法中传播
+	传播特性：当一个业务方法去调用另外一个业务方法的时候，两个业务方法中的事务应该怎么处理
+	事务传播特性总共有七种，默认是PROPAGATION_REQUIRED
+	-->
+	<tx:attributes>
+	<!-- 支持当前事务，如果该方法没有创建事务就去创建事务 -->
+	<tx:method name="add*" propagation="REQUIRED"/>
+	<tx:method name="update*" propagation="REQUIRED"/>
+	<tx:method name="delete*" propagation="REQUIRED"/>
+	<tx:method name="find*" propagation="REQUIRED" />
+	<tx:method name="save*" propagation="REQUIRED" />
+	</tx:attributes>
+	</tx:advice>
+	
+	<!-- aop配置,给哪些类中哪些方法配置事务 -->
+	 <aop:config> 
+	<!-- 切入点 -->
+	<aop:pointcut expression="execution(* com.lanou.service.*.*(..))" id="pointCut"/>
+	<!-- 通知和切入点 -->
+	 <aop:advisor advice-ref="txAdvice" pointcut-ref="pointCut"/> 
+	 </aop:config> 
+	
+</beans>

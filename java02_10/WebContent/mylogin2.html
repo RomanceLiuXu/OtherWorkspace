@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+</head>
+
+<body>
+	账号:
+	<input type="text" class="class2" name="code" />
+	<br /> 密码:
+	<input type="text" class="class3" name="psw" />
+	<br />
+	<input type="button" class="class1" value="登录" />
+
+</body>
+<script src="js/jquery-2.2.4.min.js" type="text/javascript"
+	charset="utf-8"></script>
+<script type="text/javascript">
+	var bon1 = document.querySelector(".class1");
+	var code = document.querySelector(".class2");
+	var psw = document.querySelector(".class3");
+	
+ 	bon1.onclick = function () {
+ 		var codeinput = code.value;
+ 	 	var pswinput = psw.value;
+ 		if (codeinput==""&&pswinput=="") {
+ 	 		alert("输入有误")
+ 	 	}
+ 		$.ajax({
+ 			type:"get",
+ 			url:"servlet1",
+ 			async:true,
+ 			data:{
+ 				code:codeinput,
+ 				psw:pswinput
+ 			},
+ 			success:function(res){
+ 				//  res-- 解析 -- 取值
+ 				console.log(res);
+ 				location.href = res;
+ 			}
+ 			
+ 		});
+ 		
+ 	}
+</script>
+
+</html>

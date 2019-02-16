@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<style type="text/css">
+			caption {
+				text-align: center;
+				font-size: 15px;
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table class="table">
+			<caption>学生信息表</caption>
+			<thead style="background-color: #419641;">
+				<tr>
+					<th>编号</th>
+					<th>id</th>
+					<th>name</th>
+					<th>birth</th>
+					<th>sex</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<nav aria-label="Page navigation" style="text-align: center;">
+			<ul class="pagination">
+				<li>
+					<a href="#">1</a>
+				</li>
+				<li>
+					<a href="#">2</a>
+				</li>
+				<li>
+					<a href="#">3</a>
+				</li>
+				<li>
+					<a href="#">4</a>
+				</li>
+				<li>
+					<a href="#">5</a>
+				</li>
+			</ul>
+		</nav>
+	</body>
+	<script src="js/jquery-2.2.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(window).load(function() {
+			method(1);
+		})
+
+		function method(n) {
+			//请求
+			$.ajax({
+				type: "get",
+				url: "http://localhost:8080/java_myMvc/student?page=" + n,
+				async: true,
+				success: function(res) {
+					console.log(res);
+					var re = JSON.parse(res);
+					//获取数据
+					var mylist = re.content;
+					console.log(mylist);
+					//遍历集合并添加数据
+					$.each(mylist, function(i, item) {
+						var myid = item.id;
+						var myname = item.name;
+						var mybirth = item.birth;
+						var mysex = item.sex;
+						//创建tr
+						var $tr = $("<tr></tr>");
+						//创建td标签
+						var $td1 = $("<td></td>");
+						var $td2 = $("<td></td>");
+						var $td3 = $("<td></td>");
+						var $td4 = $("<td></td>");
+						var $td5 = $("<td></td>");
+						//添加内容
+						$td1.text(i);
+						$td2.text(myid);
+						$td3.text(myname);
+						$td4.text(mybirth);
+						$td5.text(mysex);
+						//将td添加到tr中
+						$tr.append($td1);
+						$tr.append($td2);
+						$tr.append($td3);
+						$tr.append($td4);
+						$tr.append($td5);
+						//将tr添加到tb中
+						$("tbody").append($tr);
+					});
+				}
+			});
+		}
+
+		//获取分页按钮的对象并设置点击事件
+		var $lis = $("li");
+		$.each($lis, function(i, item) {
+			$(item).click(function() {
+				$(this).addClass("active");
+				console.log($(this));
+				$(this).siblings().removeClass("active");
+				method(i + 1);
+				$("tbody").html("");
+			});
+		});
+	</script>
+
+</html>

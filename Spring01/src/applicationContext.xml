@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+		>
+		
+		<!-- 配置一个bean组件
+		id：代表当前这个bean组件
+		class：bean组件类型
+		spring底层还是通过构造器来构建对象 new GregorianCalendar();
+		 -->
+	   <bean id="c1" class="java.util.GregorianCalendar">
+	   </bean>
+		
+		<!-- 静态工厂构建对象
+		底层会通过Calendar.getInstance();构建对象
+		 -->
+		<bean id="c2" class="java.util.Calendar" factory-method="getInstance">
+		</bean>
+		
+		<!-- 实例工厂构建对象 
+		底层会通过c2.getTime()方法构建对象
+		-->
+		<bean id="date" factory-bean="c2" factory-method="getTime"></bean>
+		
+		<!-- 配置自定义的ExampleBean对象 
+		scope:控制容器bean对象的个数
+		 	 singleton：默认值，单例，每次调用getBean()返回同一个对象
+		 	 prototype:多例，每次调用getBean()返回一个新的对象
+		 	 web开发应用下
+		 	 request:每次请求创建一个对象
+		 	 session:每个session对象一个bean对象
+		 	 global-session：所有session所共享的（相当于application）
+		 	生命周期方法
+		 	 init-method="" 初始化方法
+		 	 destroy-method="" 销毁的方法 
+		 	 容器关闭，单例
+		 lazy-init
+		 	延迟实例化，在调用getBean()时才会创建单例对象 
+		-->
+		<bean id="exam" class="com.lanou.bean.ExampleBean" scope="singleton" init-method="init" destroy-method="destroy" lazy-init="true"></bean>
+		
+		<!-- 配置student对象 -->
+		<bean id="stu" class="com.lanou.bean.Student">
+		<!-- 通过set方法给对象的属性赋值
+		name:对象属性
+		value:给属性赋的值
+		 -->
+		<property name="name" value="小明"></property>
+		<property name="age" value="18"></property>
+		</bean>
+		
+		<!-- 配置teacher对象-->
+		<bean id="tea" class="com.lanou.bean.Teacher">
+		<!-- 使用构造器给对象的属性赋值
+		 index:属性在构造器中参数位置，从0开始
+		 value：属性所对应的值
+		 -->
+		<constructor-arg index="0" value="姜老师"></constructor-arg>
+		<constructor-arg index="1" value="男"></constructor-arg>
+		</bean>
+		
+		<!-- 配置school对象 -->
+		<bean id="sch" class="com.lanou.bean.School">
+		<!-- ref代表引用其他的bean对象 -->
+		<property name="teacher" ref="tea"></property>
+		<property name="student" ref="stu"></property>
+		</bean>
+		
+		<!-- 通过p命名空间给对象的属性赋值 -->
+		<bean id="stu1" class="com.lanou.bean.Student" p:name="小花" p:age="20"></bean>
+		<bean id="stu1" class="com.lanou.bean.Teacher" p:student-ref="stu" p:teacher-ref="tea"></bean>
+		
+		<!-- 各种不同类型值的注入 -->
+		<bean name="msg" class="com.lanou.bean.MessageBean">
+		<!-- 给name注入null空值 -->
+		<property name="name"><null/></property>
+		<!-- int类型值的注入 -->
+		<property name="age" value=" 18 "></property>
+		<!-- 日期类型值的注入,默认转换yyyy/MM/dd格式-->
+		<property name="birthday" value="2018/8/22"></property>
+		<!-- list集合类型值的注入 -->
+		<property name="list">
+		<list>
+		<value>小红</value>
+		<value>小美</value>
+		<ref bean="stu"/>
+		<ref bean="tea"/>
+		</list>
+		</property>
+		
+		<!-- map集合值的注入 -->
+		<property name="books">
+		<map>
+		<entry key="1000" value="java基础"></entry>
+		<entry key="1001" value="java基础1"></entry>
+		<entry key="1002" value="java基础2"></entry>
+		</map>
+		</property>
+		
+		<!-- set集合类型值的注入 -->
+		<property name="cities">
+		<set>
+		<value>西安</value>
+		<value>榆林</value>
+		<value>商洛</value>
+		</set>
+		</property>
+		
+		<!-- properties类型值的注入 -->
+		<property name="props">
+		<props>
+		<prop key="username">root</prop>
+		<prop key="password">1234</prop>
+		</props>
+		</property>
+		</bean>
+		
+		<!-- 定义外部集合 -->
+		<!-- 定义外部的list集合 -->
+		<util:list id="somelist">
+		<value>啊哈哈</value>
+		<ref bean="sch"/>
+		</util:list>
+		
+		<!-- 定义外部的map集合 -->
+		<util:map id="someMap">
+		<entry key="1005" value="天气"></entry>
+		<entry key="1006" value="预报"></entry>
+		</util:map>
+		
+		<!-- 定义外部的set集合 -->
+		<util:set id="someSet">
+	      <value>北京</value>
+	      <value>上海</value>
+		</util:set>
+		
+		<!-- 定义外部的properties -->
+		<util:properties id="props">
+		<prop key="driver">com.mysql.jdbc.Driver</prop>
+		<prop key="url">baidu</prop>
+		</util:properties>
+		
+		<!-- 读取外部properties -->
+		<util:properties id="jdbc" location="jdbc.properties"></util:properties>
+		
+		<!-- 全局加载properties配置文件 -->
+		<context:property-placeholder location="jdbc.properties"/>
+
+		<!-- 定义MessageBean,引入外部数据集合 -->
+		<bean id="msg1" class="com.lanou.bean.MessageBean">
+ 		<property name="name" value="#{jdbc.username}"></property> 
+		<property name="name" value="${jdbc.username}"></property>
+		<property name="age" value="30"></property>
+		<property name="birthday" value="2018/12/12"></property>
+		<property name="list" ref="somelist"></property>
+		<property name="books" ref="someMap"></property>
+		<property name="cities" ref="someSet"></property>
+		<property name="props" ref="props"></property>
+		</bean>
+		
+		
+</beans>
+
+
+
+
+
+
+
+

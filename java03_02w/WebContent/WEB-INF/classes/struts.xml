@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 动态访问 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<!-- 开发者模式(是否处于一种开发的状态) true:打开 上线操作时应该关闭（打war包时） -->
+	<constant name="struts.devMode" value="true" />
+	<package name="one" namespace="/" extends="struts-default">
+	<action name="login" class="com.lanou.action.workAction" method="loginCheck">
+	<result name="success">
+	<!-- 跳转主页面 -->
+	/jsp/workhome.jsp
+	</result>
+	<result name="error">
+	<!-- 返回登录页面 -->
+	/jsp/worklogin.jsp
+	</result>
+	</action>
+	<action name="reginster" class="com.lanou.action.ReginsterAction" method="reginster">
+	<result name="success">
+	/jsp/rSuccess.jsp
+	</result>
+	</action>
+	
+	<action name="jscheck" class="com.lanou.action.jsAction" method="jsCheck">
+	
+	</action>
+	
+	</package>
+
+
+
+</struts>

@@ -1,0 +1,12 @@
+值栈:
+1.概念 
+  struts2的数据管理中心，存储action相关的数据和信息
+2.存放的数据
+  a.action对象
+  b.action中的属性
+  c.action中环境相关的数据(request,session,application)
+3.分区
+  a.list区(root)
+    存放action中的属性，存数据时是进行压栈存储，取数据时，自下而上一个一个遍历，遇到满足条件的，则优先取出
+  b.context区(map)
+    action中环境相关的数据(request,session,application)

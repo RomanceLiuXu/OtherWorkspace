@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <!-- 配置监听器，监听spring容器的启动
+       spring-web.jar的...web.context的OontextLoaderListener.class
+   -->
+  <listener>
+  <listener-class>
+  org.springframework.web.context.ContextLoaderListener
+  </listener-class>
+  </listener>
+  <!-- spring应用程序启动时，加载spring配置文件启动spring容器
+       param-name:固定名称，不能修改
+   -->
+  <context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  
+  <filter>
+  <filter-name>ssh</filter-name>
+  <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>ssh</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 配置openSessionInViewFilter
+       将session打开关闭提到表现层，防止数据
+       延迟加载时，session已经关闭的异常。
+       spring-orm.jar的...orm.hibernate4.support的OpenSessionInViewFilter.class
+    -->
+    <filter>
+    <filter-name>openSessionInView</filter-name>
+    <filter-class>
+    org.springframework.orm.hibernate4.support.OpenSessionInViewFilter
+    </filter-class>
+    <!-- 初始化参数，指定数据源，数据从哪延迟加载来的
+         param-name：固定名称，不能修改
+         param-value：applicationContext.xml中数据源的id
+      -->
+    <init-param>
+    <param-name>sessionFactoryBeanName</param-name>
+    <param-value>sessionFactory</param-value>
+    </init-param>
+    </filter>
+    <filter-mapping>
+    <filter-name>openSessionInView</filter-name>
+    <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>

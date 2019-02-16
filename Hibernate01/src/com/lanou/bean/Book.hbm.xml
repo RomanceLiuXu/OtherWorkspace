@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate映射文件  多方关系中多方的映射文件-->
+<hibernate-mapping>
+	<!-- 数据表和实体类之间的映射
+	 name:实体类全限定名 
+	 table:数据库中表名 -->
+	<class name="com.lanou.bean.Book" table="book">
+		<id name="bid" type="int" column="b_id">
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="string" column="b_name"/>
+		<property name="author" type="string" column="b_author"/>
+		<!-- 定义多对一的关联映射 
+		name:多方实体类中用于描述一方的实体类属性名 
+		column:多方表中用于维持关系的外键名称 
+		lazy:延迟加载
+		    false:取消延迟加载,会级联查询关联的一方对象
+		    proxy:默认值，延迟加载，使用时获取的是代理对象
+		    no-proxy:延迟加载，使用时获取的是非代理对象
+		cascade:    
+		-->
+		<many-to-one name="student" column="b_studentid" class="com.lanou.bean.Student" lazy="false" cascade="all"/>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- 开启注解扫描 -->
+	<!-- <context:component-scan base-package="com.lanou"></context:component-scan> -->
+	<!-- 加载jdbc.properties配置文件 web应用程序加载配置文件前面加上classpath:表明是去类路径下面加载 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- 配置数据库连接池:c3p0 -->
+	<bean id="c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="driverClass" value="${jdbc.driver}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxPoolSize" value="50" />
+	</bean>
+	<!-- 配置SessionFactoryBean 相当于hibernate.cfg.xml文件中的配置，主要用于构建SessionFactory对象 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- 加载数据源 -->
+		<property name="dataSource" ref="c3p0" />
+		<!-- Hibernate其他配置信息 -->
+		<property name="hibernateProperties">
+			<props>
+				<!-- 方言：必须配置 -->
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<!-- 是否显示sql -->
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- 是否格式化显示sql -->
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- 开启二级缓存 -->
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<!-- 指定二级缓存提供商 -->
+				<prop key="hibernate.cache.region.factory_class">
+					org.hibernate.cache.ehcache.EhCacheRegionFactory
+				</prop>
+				<!-- 指定二级缓存配置文件 -->
+				<prop key="hibernate.cache.configurationResourceName">
+					ehcache.xml
+				</prop>
+				<!-- 开启查询缓存 -->
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<!-- 给当前线程绑定事务 -->
+				<prop key="hibernate.current_session_context_class">
+					org.springframework.orm.hibernate4.SpringSessionContext
+				</prop>
+			</props>
+		</property>
+		<!-- 关联映射文件 -->
+		<property name="mappingLocations">
+			<value>classpath:com/lanou/bean/*.hbm.xml</value>
+		</property>
+	</bean>
+
+	<!-- 配置HibernateTemplate 一个操作数据库的对象 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<!-- 加载sessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>
+
+
+
+
+
+
+
+

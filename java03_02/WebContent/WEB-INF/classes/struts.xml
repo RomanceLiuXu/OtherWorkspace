@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 动态访问 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<!-- 开发者模式(是否处于一种开发的状态) true:打开 上线操作时应该关闭（打war包时） -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 访问路径:协议://ip:端口号/工程名/一级路径/二级路径 
+	package
+	name:包名(方便跨包访问) 
+	namespace（命名空间）: 一级路径 
+	/:去掉一级路径，直接通过二级路径访问 
+	/xx:存在一级路径，而且名字必须为xx 
+	extends:指的是包和包的继承 
+	action
+	name:二级路径 
+	class:包名+类名 
+	result
+	name:acttion中方法的返回值 
+	method:指定执行的方法 
+	type:访问的类型，不设置默认为分发-->
+	<package name="one" namespace="/" extends="struts-default">
+		<action name="test" class="com.lanou.action.TestAction" method="method1">
+			<result name="success">
+				/myindex.html
+			</result>
+		</action>
+		<!-- 直接访问对应的页面 -->
+		<action name="index" >
+			<result type="redirect">
+				/myindex.html
+			</result>
+		</action>
+
+       <action name="test1">
+       <result>
+       /jsp/test1.jsp
+       </result>
+       </action>
+       
+       <action name="test2" class="com.lanou.action.TestAction" method="method2">
+       <result name="success">
+       /jsp/test1.jsp
+       </result>
+       </action> 
+       
+       <!-- 使用*代替Action名和Action中的方法名 -->
+<!--         <action name="*_*" class="com.lanou.action.{1}" method="{2}"> -->
+       <action name="test_*" class="com.lanou.action.TestAction" method="{1}">
+         <result name="success">
+         /myindex.html
+         </result>
+         <result name="error">
+         /jsp/test1.jsp
+         </result>
+       </action>
+       
+       <action name="testinput_*" class="com.lanou.action.Test2Action" method="{1}">
+       <result name="success">
+         /jsp/test2.jsp
+       </result>
+       <result name="error">
+          /jsp/test2.jsp
+       </result>
+       </action>
+	</package>
+	
+	<package name="two" namespace="/" extends="struts-default">
+	<action name="login">
+	<result name="success">
+	<!-- 登录成功之后跳转主页面 -->
+	</result>
+	<result name="error">
+	<!-- 失败返回登录页面 -->
+	</result>
+	</action>
+	
+	
+	
+	</package>
+
+
+</struts>

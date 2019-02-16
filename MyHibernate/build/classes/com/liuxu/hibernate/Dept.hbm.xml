@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate的映射文件 -->
+<hibernate-mapping>
+	<class name="com.liuxu.hibernate.Dept" table="dept">
+		<!-- 主键映射 -->
+		<id name="deptId" type="int">
+			<column name="deptNo" />
+			<!-- 主键的生成策略 -->
+			<generator class="assigned" />
+		</id>
+		<!-- 其他字段的映射 -->
+		<property name="deptName" type="java.lang.String">
+			<column name="deptName" />
+		</property>
+		<property name="deptLocation" type="java.lang.String">
+			<column name="location" />
+		</property>
+	</class>
+
+</hibernate-mapping>

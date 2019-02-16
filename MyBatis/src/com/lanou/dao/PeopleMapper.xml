@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+	<!-- 一对多关联查询 一方配置-->
+	<mapper namespace="com.lanou.dao.PeopleMapper">
+	<!-- 开启当前Mapper下的二级缓存
+	eviction:缓存回收策略
+		LRU:最近最少使用策略(默认回收策略)
+		FIFO:先进先出 First In First out
+		WEAK:弱引用
+		SOFT:软引用
+		强引用 弱引用 软引用 虚引用
+	flushInterval:缓存刷新时间间隔，每隔多久刷新一次缓存中数据
+				  不指定是默认是执行查询时刷新缓存，单位是毫秒
+	readOnly:只读
+	Size:指定缓存中可以缓存多个数据对象，超出这个指定数据，就以指定的
+		回收策略来对数据进行回收，不指定默认是1024个
+ 	-->
+	<cache/>
+	<resultMap type="com.lanou.bean.People" id="peopleBean">
+	<id property="pid" column="pid"/>
+	<result property="username" column="username"/>
+	<result property="address" column="address"/>
+	<!--表示多方实体类属性和表字段之间的映射关系 
+	当前实体类在用于表示多方的集合属性名
+	多方实体全限定名
+	 -->
+	<collection property="cards" ofType="com.lanou.bean.Card">
+		<id property="cid" column="cid"/>
+		<result property="cno" column="cno"/>
+		<result property="remark" column="remark"/>
+	</collection>
+	</resultMap>
+
+	<select id="findPeopleById" parameterType="int" resultMap="peopleBean">
+	<!-- select p.*,c.* from people p,card c where p.pid = c.p_id and p.pid=#{pid}-->
+		select p.*,c.* from people p join card c on p.pid=c.p_id and p.pid=#{pid}
+	</select>
+</mapper>

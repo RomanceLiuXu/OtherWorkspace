@@ -1,0 +1,30 @@
+package com.liuxu.myTest;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+
+import au.com.bytecode.opencsv.CSVReader;
+
+/**
+ *
+ * @author LiuXu
+ * @time2018年9月25日下午2:01:22
+ **/
+public class Test2 {
+
+	public static void main(String[] args) throws IOException {
+		CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream("/Users/xalo/Documents/one"), "utf-8"));
+		String[] strs = null;
+		Map<String, Integer> maps = new HashMap<>();
+		while ((reader.readNext())!=null) {
+			
+			
+		}
+	}
+	
+}

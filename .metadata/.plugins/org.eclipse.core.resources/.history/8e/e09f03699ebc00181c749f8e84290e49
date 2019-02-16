@@ -1,0 +1,9 @@
+package com.lanou.cglib;
+/**
+*
+* @author LiuXu
+* @time2018年9月20日下午2:28:17
+**/
+public class ProxyFactory {
+
+}

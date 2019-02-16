@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+	<!-- 打开国际化 -->
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="one" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="one" class="com.lanou.interceptor.UserInterceptor"></interceptor>
+			<interceptor name="page" class="com.lanou.interceptor.PageInterceptor"></interceptor>
+			<interceptor name="add" class="com.lanou.interceptor.AddInterceptor"></interceptor>
+			<interceptor name="update"
+				class="com.lanou.interceptor.UpdateInterceptor"></interceptor>
+		</interceptors>
+		<action name="login" class="com.lanou.action.UserAction"
+			method="login">
+			<!-- <interceptor-ref name="one"></interceptor-ref> -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">
+				/jsp/home.jsp
+			</result>
+			<result name="error">
+				/jsp/login.jsp
+			</result>
+		</action>
+
+		<action name="home" class="com.lanou.action.HomeAction" method="showHome">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="one"></interceptor-ref>
+			<result name="home">
+				/jsp/home.jsp
+			</result>
+			<result name="error">
+				/jsp/login.jsp
+			</result>
+		</action>
+
+		<action name="page" class="com.lanou.action.HomeAction" method="showPage">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="page"></interceptor-ref>
+			<result name="home">
+				/jsp/home.jsp
+			</result>
+			<result name="error">
+				/jsp/login.jsp
+			</result>
+		</action>
+		<!-- 删除数据 -->
+		<action name="delete" class="com.lanou.action.UserAction" method="delete">
+			<result name="home">
+				/jsp/home.jsp
+			</result>
+		</action>
+		<!-- 增加人员信息 -->
+		<action name="add" class="com.lanou.action.UserAction" method="add">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="add"></interceptor-ref>
+			<result name="home">
+				/jsp/home.jsp
+			</result>
+		</action>
+		<!-- 修改数据 -->
+		<action name="update" class="com.lanou.action.UserAction" method="update">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="update"></interceptor-ref>
+			<result name="home">
+				/jsp/home.jsp
+			</result>
+		</action>
+		<!-- 注册 -->
+		<action name="reginster" class="com.lanou.action.UserAction" method="reginster">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="add"></interceptor-ref>
+			<result name="success">
+             	/jsp/photoUp.jsp		
+			</result>
+			<result name="error">
+             	/jsp/reginster.jsp		
+			</result>
+		</action>
+
+        <action name="fileup" class="com.lanou.action.FileUpAction" method="fileUp">
+			<interceptor-ref name="defaultStack">
+			<param name="fileUpload.allowedExtensions">png,jpg,gif</param>
+			</interceptor-ref>
+			<result name="success">
+             	/jsp/single.jsp	
+			</result>
+			<result name="error">
+             	/jsp/reginster.jsp	
+			</result>
+		</action>
+
+
+	</package>
+
+</struts>

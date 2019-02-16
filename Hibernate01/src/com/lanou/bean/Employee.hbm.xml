@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate映射文件 -->
+<hibernate-mapping>
+	<!-- 数据表和实体类之间的映射 name:实体类全限定名 table:数据库中表名 -->
+	<class name="com.lanou.bean.Employee" table="employee">
+		<id name="eid" type="int" column="e_id">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="ename" type="string" column="e_name"></property>
+		<!-- 多对多的配置 
+		name:当前实体类中用于描述对方的集合名称 
+		table:中间表名称 
+		-->
+		<set name="projects" table="proemp" cascade="all">
+			<!-- column:当前表在中间表的描述id -->
+			<key column="rempid"></key>
+			<!-- class:对方实体类全限定名 
+			     column:对方表在中间表的描述id 
+			-->
+			<many-to-many class="com.lanou.bean.Project" column="rproid"></many-to-many>
+		</set>
+
+
+	</class>
+</hibernate-mapping>

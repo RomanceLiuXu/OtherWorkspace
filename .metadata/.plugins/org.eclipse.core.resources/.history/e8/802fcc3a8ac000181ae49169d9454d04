@@ -1,0 +1,14 @@
+package com.liuxu.myTest;
+
+/**
+ *
+ * @author LiuXu
+ * @time2018年9月25日下午2:01:22
+ **/
+public class Test2 {
+
+	public static void main(String[] args) {
+		
+	}
+	
+}

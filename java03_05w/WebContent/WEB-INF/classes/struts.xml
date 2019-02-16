@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="one" namespace="/" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="one" class="com.lanou.interceptor.UserInterceptor"></interceptor>
+			<interceptor name="two" class="com.lanou.interceptor.UserDestroy"></interceptor>
+			<!-- 所有method开头的方法都不拦截 -->
+			<interceptor name="three" class="com.lanou.interceptor.MethodInterceptor">
+			<param name="excludeMethods">method*</param>
+			 </interceptor>
+			 
+			 <!-- 三个拦截器 -->
+			 <interceptor name="interceptor1" class="com.lanou.interceptor.TestInterceptor1"></interceptor>
+			 <interceptor name="interceptor2" class="com.lanou.interceptor.TestInterceptor2"></interceptor>
+			 <interceptor name="interceptor3" class="com.lanou.interceptor.TestInterceptor3"></interceptor>
+			 
+			 <!-- 拦截器栈 -->
+			 <interceptor-stack name="allinterceptor">
+			 <interceptor-ref name="interceptor1"></interceptor-ref>
+			 <interceptor-ref name="interceptor2"></interceptor-ref>
+			 <interceptor-ref name="interceptor3"></interceptor-ref>
+			 </interceptor-stack>
+			 
+		</interceptors>
+
+
+		<action name="user_*" class="com.lanou.action.UserAction" method="login">
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="one">
+<!-- 			<param name="excludeMethods">login</param> -->
+			</interceptor-ref>
+			<interceptor-ref name="two"></interceptor-ref>
+			<result name="login">
+				/jsp/login.jsp
+			</result>
+			
+			<result name="home">
+		     /jsp/home.jsp	
+			</result>
+			
+		</action>
+		
+		<action name="test_*" class="com.lanou.action.UserAction" method="{1}">
+		<interceptor-ref name="three"></interceptor-ref>
+		<result name="success">
+		/jsp/login.jsp
+		</result>
+		</action>
+		
+		
+<!-- 		<action name="user_*" class="com.lanou.action.UserAction" method="destroy"> -->
+<!-- 		<interceptor-ref name="defaultStack"></interceptor-ref> -->
+<!-- 			<interceptor-ref name="one"> -->
+<!-- 			<param name="excludeMethods">login</param> --> 
+<!-- 			</interceptor-ref> -->
+<!-- 			<interceptor-ref name="two"></interceptor-ref> -->
+			
+<!-- 			<result name="login"> -->
+<!-- 				/jsp/login.jsp -->
+<!-- 			</result> -->
+			
+<!-- 			<result name="home"> -->
+<!-- 		     /jsp/home.jsp	 -->
+<!-- 			</result> -->
+			
+<!-- 		</action> -->
+
+	</package>
+
+</struts>

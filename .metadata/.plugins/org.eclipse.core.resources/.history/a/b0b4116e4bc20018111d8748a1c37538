@@ -1,0 +1,11 @@
+package com.lanou.mysql;
+
+/**
+ * mysql存储过程的使用
+ * 
+ * @author LiuXu
+ * @time2018年9月27日下午7:47:39
+ **/
+public class MysqlPro {
+
+}

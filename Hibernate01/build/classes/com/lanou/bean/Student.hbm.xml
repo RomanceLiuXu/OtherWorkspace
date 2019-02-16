@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate映射文件 多方关系中一方的映射文件 -->
+<hibernate-mapping>
+	<!-- 数据表和实体类之间的映射 
+	name:实体类全限定名 
+	table:数据库中表名 -->
+	<class name="com.lanou.bean.Student" table="student">
+		<id name="sid" type="int" column="s_id">
+			<generator class="assigned"/>
+		</id>
+		<property name="name" type="string" column="s_name"/>
+		<!-- 定义一对多的关系映射 
+		 name:一方实体中用于描述多方的集合属性名称 
+		 lazy:延迟加载 
+		     true：延迟加载，默认值
+		     false:取消延迟加载，级联查询所关联的对象信息
+		 cascade:级联操作
+		     none:默认值，值操作当前对象
+		     save-update:级联的添加或修改其对象
+		     delete:级联的删除其关联对象
+		     all:包括save-update/delete
+		     -->
+		<set name="books" lazy="false" cascade="all">
+		<!-- 集合级别的二级缓存 -->
+		<cache usage="read-only"/>
+			<!-- 多方表中用于维持关系的外键列名 -->
+			<key column="b_studentid" />
+			<!-- 多方实体全限定名 -->
+			<one-to-many class="com.lanou.bean.Book" />
+		</set>
+	</class>
+</hibernate-mapping>

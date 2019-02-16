@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=UTF-8>
+<title>æ é¢</title>
+</head>
+<body>
+<div id="main" style="width: 600px;height: 600px"></div>
+</body>
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/echarts.common.min.js"></script>
+<script type="text/javascript">
+window.onland = function(){
+	$.ajax({
+		url:"",
+		type:"",
+		success:function(data){
+			
+		}
+	});
+	
+	
+}
+</script>
+</html>
